@@ -10,17 +10,29 @@
     <script src="vendor/semantic/ui/dist/semantic.js"></script>
     <title>Calculadora</title>
     <style>
+        body{
+            height: 650px;
+        }
         header:first-child {
-            margin-top: 30px;
+            margin-top: 10px;
         }
         .headerViewCalc{
             margin-bottom: 30px;
         }
         #viewCalculadora{
-            height: 360px;
+            height: 380px;
+        }
+        .view{
+            height: 280px;
         }
         #avancarButton {
 
+        }
+        #tipoLocal{
+            display: none;
+        }
+        #consumo{
+            display: none;
         }
     </style>
 </head>
@@ -38,14 +50,81 @@
 </header>
 <main>
     <div class="ui attached segment" id="viewCalculadora">
-        <div class="ui segment">
+        <input type="hidden" value="localizacao" id="inputView">
+        <div class="ui segment view" id="localizacao">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
                     <i class="circular green map outline icon"></i>
                     Local da Instalação
                 </h4>
             </div>
-            <div class="ui huge form">
+            <div class="ui big form">
+                <div class="two fields">
+                    <div class="field">
+                        <label for="estados">Estados</label>
+                        <select class="ui search dropdown" name="estados" id="estados">
+                            <option value="" selected> -- </option>
+                            <option value="1">ESTADOS</option>
+                            <option value="2">ESTADOS</option>
+                            <option value="3">ESTADOS</option>
+                            <option value="4">ESTADOS</option>
+                            <option value="5">ESTADOS</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="cidades">Cidades</label>
+                        <select class="ui search dropdown" name="cidades" id="cidades">
+                            <option value="" selected>--</option>
+                            <option value="1">CIDADES</option>
+                            <option value="2">CIDADES</option>
+                            <option value="3">CIDADES</option>
+                            <option value="4">CIDADES</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui segment view" id="tipoLocal">
+            <div class="headerViewCalc">
+                <h4 class="ui center aligned icon header">
+                    <i class="circular green map outline icon"></i>
+                    Local da Instalação
+                </h4>
+            </div>
+            <div class="ui big form">
+                <div class="two fields">
+                    <div class="field">
+                        <label for="estados">Estados</label>
+                        <select class="ui search dropdown" name="estados" id="estados">
+                            <option value="" selected> -- </option>
+                            <option value="1">ESTADOS</option>
+                            <option value="2">ESTADOS</option>
+                            <option value="3">ESTADOS</option>
+                            <option value="4">ESTADOS</option>
+                            <option value="5">ESTADOS</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="cidades">Cidades</label>
+                        <select class="ui search dropdown" name="cidades" id="cidades">
+                            <option value="" selected>--</option>
+                            <option value="1">CIDADES</option>
+                            <option value="2">CIDADES</option>
+                            <option value="3">CIDADES</option>
+                            <option value="4">CIDADES</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui segment view" id="consumo">
+            <div class="headerViewCalc">
+                <h4 class="ui center aligned icon header">
+                    <i class="circular green map outline icon"></i>
+                    Local da Instalação
+                </h4>
+            </div>
+            <div class="ui big form">
                 <div class="two fields">
                     <div class="field">
                         <label for="estados">Estados</label>
@@ -72,8 +151,11 @@
             </div>
         </div>
         <div class="eight wide column">
-            <button class="ui right floated primary button" id="voltarButton">Voltar</button>
-            <button class="ui left floated primary button" id="avancarButton">Avançar</button>
+            <button class="ui left floated primary massive button" id="voltarButton">Voltar</button>
+            <button class="ui right floated primary massive right labeled icon button" id="avancarButton">
+                <i class="right arrow icon"></i>
+                Avançar
+            </button>
         </div>
     </div>
     <div class="ui three bottom attached steps">
@@ -81,7 +163,7 @@
             <i class="marker icon"></i>
             <div class="content">
                 <div class="title">Localização</div>
-                <div class="description">Choose your shipping options</div>
+                <div class="description">Escolha o local da instalação</div>
             </div>
         </div>
         <div class="step">
@@ -103,5 +185,6 @@
 <script>
     $('.ui.dropdown').dropdown();
 </script>
+<script src="js/transicao.js"></script>
 </body>
 </html>
