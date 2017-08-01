@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="vendor/semantic/ui/dist/semantic.css">
+    <script src="vendor/components/jquery/jquery.js"></script>
+    <script src="vendor/semantic/ui/dist/semantic.js"></script>
+    <title>Calculadora</title>
+    <style>
+        header:first-child {
+            margin-top: 30px;
+        }
+        .headerViewCalc{
+            margin-bottom: 30px;
+        }
+        #viewCalculadora{
+            height: 360px;
+        }
+        #avancarButton {
+
+        }
+    </style>
+</head>
+<body class="ui container">
+<header>
+    <div class="ui center aligned header">
+        <h2 class="ui icon header">
+            <i class="blue calculator icon"></i>
+            <span class="content">
+                Calculadora Solar
+                <span class="sub header">Com algumas informações vamos calcular o sistema de captação fotovoltaica.</span>
+            </span>
+        </h2>
+    </div>
+</header>
+<main>
+    <div class="ui attached segment" id="viewCalculadora">
+        <div class="ui segment">
+            <div class="headerViewCalc">
+                <h4 class="ui center aligned icon header">
+                    <i class="circular green map outline icon"></i>
+                    Local da Instalação
+                </h4>
+            </div>
+            <div class="ui huge form">
+                <div class="two fields">
+                    <div class="field">
+                        <label for="estados">Estados</label>
+                        <select class="ui search dropdown" name="estados" id="estados">
+                            <option value="" selected> -- </option>
+                            <option value="1">ESTADOS</option>
+                            <option value="2">ESTADOS</option>
+                            <option value="3">ESTADOS</option>
+                            <option value="4">ESTADOS</option>
+                            <option value="5">ESTADOS</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="cidades">Cidades</label>
+                        <select class="ui search dropdown" name="cidades" id="cidades">
+                            <option value="" selected>--</option>
+                            <option value="1">CIDADES</option>
+                            <option value="2">CIDADES</option>
+                            <option value="3">CIDADES</option>
+                            <option value="4">CIDADES</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <button class="ui right floated primary button" id="voltarButton">Voltar</button>
+            <button class="ui left floated primary button" id="avancarButton">Avançar</button>
+        </div>
+    </div>
+    <div class="ui three bottom attached steps">
+        <div class="active step">
+            <i class="marker icon"></i>
+            <div class="content">
+                <div class="title">Localização</div>
+                <div class="description">Choose your shipping options</div>
+            </div>
+        </div>
+        <div class="step">
+            <i class="building icon"></i>
+            <div class="content">
+                <div class="title">Tipo do Local</div>
+                <div class="description">Ambiente da instalação</div>
+            </div>
+        </div>
+        <div class="disabled step">
+            <i class="plug icon"></i>
+            <div class="content">
+                <div class="title">Consumo Médio</div>
+                <div class="description">Gasto médio anual em KWh</div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    $('.ui.dropdown').dropdown();
+</script>
+</body>
+</html>
