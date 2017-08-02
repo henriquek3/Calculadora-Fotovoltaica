@@ -14,13 +14,18 @@ $(document).ready(function () {
                     console.log('localizacao');break;
                 case('tipo'):
                     $('div.step:odd').addClass('active');
-                    $('#localizacao').remove();
-                    $('#tipoLocal').transition('slide left','2000ms');
+                    $('div.step:last').removeClass('disabled');
+                    $('#localizacao').transition('hide');
+                    $('#tipoLocal').transition('slide right', '2000ms');
                     console.log('tipo');break;
                 case('consumo'):
+                    $('div.step:odd').removeClass('active');
+                    $('div.step:first').removeClass('active');
+                    $('div.step:first').addClass('disabled');
+                    $('div.step:last').removeClass('disabled');
                     $('div.step:last').addClass('active');
-                    $('#tipoLocal').remove();
-                    $('#consumo').transition('slide left','2000ms');
+                    $('#tipoLocal').transition('hide');
+                    $('#consumo').transition('slide right', '2000ms');
                     console.log('consumo');break;
             }
         }
@@ -33,6 +38,9 @@ $(document).ready(function () {
                 case('localizacao'):
                     console.log('localizacao');break;
                 case('tipo'):
+                    $('#consumo').remove();
+                    $('#tipoLocal').add();
+                    $('#tipoLocal').transition('slide left', '2000ms');
                     console.log('tipo');break;
                 case('consumo'):
                     console.log('consumo');break;
