@@ -23,7 +23,7 @@
             height: 380px;
         }
         .view{
-            height: 280px;
+            height: 270px;
         }
         #avancarButton {
 
@@ -33,6 +33,9 @@
         }
         #consumo{
             display: none;
+        }
+        .btn-left-right button{
+            width: 225px;
         }
     </style>
 </head>
@@ -50,8 +53,8 @@
 </header>
 <main>
     <div class="ui attached segment" id="viewCalculadora">
-        <input type="hidden" value="localizacao" id="inputView">
-        <div class="ui segment view" id="localizacao">
+
+        <div class="ui yellow segment view" id="localizacao">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
                     <i class="circular green map outline icon"></i>
@@ -84,18 +87,19 @@
                 </div>
             </div>
         </div>
-        <div class="ui segment view" id="tipoLocal">
+
+        <div class="ui blue segment view" id="tipoLocal">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
                     <i class="circular green map outline icon"></i>
-                    Local da Instalação
+                    Tipo do Local
                 </h4>
             </div>
             <div class="ui big form">
                 <div class="two fields">
                     <div class="field">
-                        <label for="estados">Estados</label>
-                        <select class="ui search dropdown" name="estados" id="estados">
+                        <label for="estados2">Estados</label>
+                        <select class="ui search dropdown" name="estados" id="estados2">
                             <option value="" selected> -- </option>
                             <option value="1">ESTADOS</option>
                             <option value="2">ESTADOS</option>
@@ -105,8 +109,8 @@
                         </select>
                     </div>
                     <div class="field">
-                        <label for="cidades">Cidades</label>
-                        <select class="ui search dropdown" name="cidades" id="cidades">
+                        <label for="cidades2">Cidades</label>
+                        <select class="ui search dropdown" name="cidades" id="cidades2">
                             <option value="" selected>--</option>
                             <option value="1">CIDADES</option>
                             <option value="2">CIDADES</option>
@@ -117,18 +121,19 @@
                 </div>
             </div>
         </div>
-        <div class="ui segment view" id="consumo">
+
+        <div class="ui red segment view" id="consumo">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
                     <i class="circular green map outline icon"></i>
-                    Local da Instalação
+                    Consumo
                 </h4>
             </div>
             <div class="ui big form">
                 <div class="two fields">
                     <div class="field">
                         <label for="estados">Estados</label>
-                        <select class="ui search dropdown" name="estados" id="estados">
+                        <select class="ui search dropdown" name="estados" id="estados3">
                             <option value="" selected> -- </option>
                             <option value="1">ESTADOS</option>
                             <option value="2">ESTADOS</option>
@@ -139,7 +144,7 @@
                     </div>
                     <div class="field">
                         <label for="cidades">Cidades</label>
-                        <select class="ui search dropdown" name="cidades" id="cidades">
+                        <select class="ui search dropdown" name="cidades" id="cidades3">
                             <option value="" selected>--</option>
                             <option value="1">CIDADES</option>
                             <option value="2">CIDADES</option>
@@ -150,8 +155,12 @@
                 </div>
             </div>
         </div>
-        <div class="eight wide column">
-            <button class="ui left floated primary massive button" id="voltarButton">Voltar</button>
+
+        <div class="eight wide column btn-left-right">
+            <button class="ui left floated primary massive left labeled icon button" id="voltarButton">
+                <i class="left arrow icon"></i>
+                Voltar
+            </button>
             <button class="ui right floated primary massive right labeled icon button" id="avancarButton">
                 <i class="right arrow icon"></i>
                 Avançar
@@ -159,7 +168,7 @@
         </div>
     </div>
     <div class="ui three bottom attached steps">
-        <div class="active step">
+        <div class="step">
             <i class="marker icon"></i>
             <div class="content">
                 <div class="title">Localização</div>
