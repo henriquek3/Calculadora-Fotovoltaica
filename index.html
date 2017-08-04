@@ -31,25 +31,15 @@
 
         #tipoLocal {
             margin-top: 0;
+            padding-top: 5.5%;
         }
 
         #consumo {
             margin-top: 0;
         }
 
-        .house {
-            height: 40%;
-            width: 40%;
-        }
-
-        .farm {
-            height: 80%;
-            width: 80%;
-        }
-
-        .industria {
-            height: 50%;
-            width: 50%;
+        .cardhover:hover {
+            border: 5px solid #2185D0;
         }
     </style>
 </head>
@@ -106,32 +96,38 @@
 
             <div class="ui three column grid">
                 <div class="column">
-                    <div class="ui card">
-                        <div class="ui centered image house">
-                            <img src="images/house.png">
-                        </div>
+                    <div class="ui fluid card" id="residencial">
                         <div class="content">
-                            <a class="header">Residencial</a>
+                            <div class="ui centered image">
+                                <img src="images/house.png">
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="ui centered header">Residencial</span>
                         </div>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="ui card">
-                        <div class="ui centered image farm">
-                            <img src="images/farm.png">
-                        </div>
+                    <div class="ui fluid card" id="rural">
                         <div class="content">
-                            <a class="header">Agricola</a>
+                            <div class="ui centered image">
+                                <img src="images/farm.png">
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="ui centered header">Rural</span>
                         </div>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="ui card">
-                        <div class="ui centered image industria">
-                            <img src="images/industria.png">
-                        </div>
+                    <div class="ui fluid card" id="industrial">
                         <div class="content">
-                            <a class="header">Industrial</a>
+                            <div class="image">
+                                <img src="images/industria.png">
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="ui centered header">Industrial</span>
                         </div>
                     </div>
                 </div>
@@ -215,6 +211,8 @@
     $('#tipoLocal').transition('hide');
     $('#consumo').transition('hide');
     $('div.step:first').addClass('active');
+    $('.card').attr('align', 'center');
+    $('.card').css('height', '150px');
 </script>
 <script src="js/transicao.js"></script>
 </body>

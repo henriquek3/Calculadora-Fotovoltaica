@@ -5,6 +5,7 @@ $(document).ready(function () {
         'consumo'
     ];
     let num = 0;
+    let tipolocal = '';
     $('.right.button').click(() => {
         if (num <= 1 ) {
             num += 1;
@@ -57,4 +58,23 @@ $(document).ready(function () {
         }
     });
 
+    /*
+     * @todo add css on mouse hover cards
+     */
+    $('.card').hover(function () {
+        $(this).addClass('cardhover');
+        $('.cardhover').click(function () {
+            $(this).removeClass('cardhover');
+            $('.card').css('border', '');
+            $(this).css('border', '5px solid orange');
+        });
+    });
+
+    /*
+     * @todo seta variavel 'tipolocal'
+     */
+    $('.card').click(function () {
+        tipolocal = $(this).attr('id');
+        console.log(tipolocal);
+    });
 });
