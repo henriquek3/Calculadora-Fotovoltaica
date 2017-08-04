@@ -25,17 +25,31 @@
         .view{
             height: 270px;
         }
-        #avancarButton {
-
-        }
-        #tipoLocal{
-            /*display: none;*/
-        }
-        #consumo{
-            /*display: none;*/
-        }
         .btn-left-right button{
             width: 225px;
+        }
+
+        #tipoLocal {
+            margin-top: 0;
+        }
+
+        #consumo {
+            margin-top: 0;
+        }
+
+        .house {
+            height: 40%;
+            width: 40%;
+        }
+
+        .farm {
+            height: 80%;
+            width: 80%;
+        }
+
+        .industria {
+            height: 50%;
+            width: 50%;
         }
     </style>
 </head>
@@ -54,7 +68,7 @@
 <main>
     <div class="ui attached segment" id="viewCalculadora">
 
-        <div class="ui yellow segment view" id="localizacao">
+        <div class="ui green segment view" id="localizacao">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
                     <i class="circular green map outline icon"></i>
@@ -89,51 +103,55 @@
         </div>
 
         <div class="ui blue segment view" id="tipoLocal">
-            <div class="headerViewCalc">
-                <h4 class="ui center aligned icon header">
-                    <i class="circular green map outline icon"></i>
-                    Tipo do Local
-                </h4>
-            </div>
-            <div class="ui big form">
-                <div class="two fields">
-                    <div class="field">
-                        <label for="estados2">Estados</label>
-                        <select class="ui search dropdown" name="estados" id="estados2">
-                            <option value="" selected> -- </option>
-                            <option value="1">ESTADOS</option>
-                            <option value="2">ESTADOS</option>
-                            <option value="3">ESTADOS</option>
-                            <option value="4">ESTADOS</option>
-                            <option value="5">ESTADOS</option>
-                        </select>
+
+            <div class="ui three column grid">
+                <div class="column">
+                    <div class="ui card">
+                        <div class="ui centered image house">
+                            <img src="images/house.png">
+                        </div>
+                        <div class="content">
+                            <a class="header">Residencial</a>
+                        </div>
                     </div>
-                    <div class="field">
-                        <label for="cidades2">Cidades</label>
-                        <select class="ui search dropdown" name="cidades" id="cidades2">
-                            <option value="" selected>--</option>
-                            <option value="1">CIDADES</option>
-                            <option value="2">CIDADES</option>
-                            <option value="3">CIDADES</option>
-                            <option value="4">CIDADES</option>
-                        </select>
+                </div>
+                <div class="column">
+                    <div class="ui card">
+                        <div class="ui centered image farm">
+                            <img src="images/farm.png">
+                        </div>
+                        <div class="content">
+                            <a class="header">Agricola</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui card">
+                        <div class="ui centered image industria">
+                            <img src="images/industria.png">
+                        </div>
+                        <div class="content">
+                            <a class="header">Industrial</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
 
         <div class="ui red segment view" id="consumo">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
                     <i class="circular green map outline icon"></i>
-                    Consumo
+                    Local da Instalação
                 </h4>
             </div>
             <div class="ui big form">
                 <div class="two fields">
                     <div class="field">
                         <label for="estados">Estados</label>
-                        <select class="ui search dropdown" name="estados" id="estados3">
+                        <select class="ui search dropdown" name="estados" id="estados">
                             <option value="" selected> -- </option>
                             <option value="1">ESTADOS</option>
                             <option value="2">ESTADOS</option>
@@ -144,7 +162,7 @@
                     </div>
                     <div class="field">
                         <label for="cidades">Cidades</label>
-                        <select class="ui search dropdown" name="cidades" id="cidades3">
+                        <select class="ui search dropdown" name="cidades" id="cidades">
                             <option value="" selected>--</option>
                             <option value="1">CIDADES</option>
                             <option value="2">CIDADES</option>
@@ -167,6 +185,7 @@
             </button>
         </div>
     </div>
+
     <div class="ui three bottom attached steps">
         <div class="step">
             <i class="marker icon"></i>
@@ -193,8 +212,8 @@
 </main>
 <script>
     $('.ui.dropdown').dropdown();
-    $('#tipoLocal').hide();
-    $('#consumo').hide();
+    $('#tipoLocal').transition('hide');
+    $('#consumo').transition('hide');
     $('div.step:first').addClass('active');
 </script>
 <script src="js/transicao.js"></script>
