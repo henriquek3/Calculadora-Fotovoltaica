@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="vendor/semantic/ui/dist/semantic.css">
     <script src="vendor/components/jquery/jquery.js"></script>
     <script src="vendor/semantic/ui/dist/semantic.js"></script>
+    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/slider.css">
+    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/all.css">
+    <script src="vendor/components/jqueryui/jquery-ui.min.js"></script>
     <title>Calculadora</title>
     <style>
         body{
@@ -41,6 +44,7 @@
         .cardhover:hover {
             border: 5px solid #2185D0;
         }
+
     </style>
 </head>
 <body class="ui container">
@@ -57,7 +61,7 @@
 </header>
 <main>
     <div class="ui attached segment" id="viewCalculadora">
-
+        <!-- Localização -->
         <div class="ui green segment view" id="localizacao">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
@@ -92,8 +96,8 @@
             </div>
         </div>
 
+        <!-- Tipo do Local -->
         <div class="ui blue segment view" id="tipoLocal">
-
             <div class="ui three column grid">
                 <div class="column">
                     <div class="ui fluid card" id="residencial">
@@ -132,10 +136,9 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
 
+        <!-- Consumo Médio -->
         <div class="ui red segment view" id="consumo">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
@@ -143,33 +146,15 @@
                     Local da Instalação
                 </h4>
             </div>
-            <div class="ui big form">
-                <div class="two fields">
-                    <div class="field">
-                        <label for="estados">Estados</label>
-                        <select class="ui search dropdown" name="estados" id="estados">
-                            <option value="" selected> -- </option>
-                            <option value="1">ESTADOS</option>
-                            <option value="2">ESTADOS</option>
-                            <option value="3">ESTADOS</option>
-                            <option value="4">ESTADOS</option>
-                            <option value="5">ESTADOS</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <label for="cidades">Cidades</label>
-                        <select class="ui search dropdown" name="cidades" id="cidades">
-                            <option value="" selected>--</option>
-                            <option value="1">CIDADES</option>
-                            <option value="2">CIDADES</option>
-                            <option value="3">CIDADES</option>
-                            <option value="4">CIDADES</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+            <p>
+                <label for="amount">Maximum price:</label>
+                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+            </p>
+
+            <div id="slider-range-min"></div>
         </div>
 
+        <!-- Botões Nav -->
         <div class="eight wide column btn-left-right">
             <button class="ui left floated primary massive left labeled icon button" id="voltarButton">
                 <i class="left arrow icon"></i>
@@ -182,6 +167,7 @@
         </div>
     </div>
 
+    <!-- Steps -->
     <div class="ui three bottom attached steps">
         <div class="step">
             <i class="marker icon"></i>
@@ -213,6 +199,21 @@
     $('div.step:first').addClass('active');
     $('.card').attr('align', 'center');
     $('.card').css('height', '150px');
+</script>
+<script>
+    $(function () {
+        $("#slider-range-min").slider({
+            range: "min",
+            value: 150,
+            min: 100,
+            max: 10000,
+            /*step: 11,*/
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.value);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range-min").slider("value"));
+    });
 </script>
 <script src="js/transicao.js"></script>
 </body>
