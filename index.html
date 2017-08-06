@@ -147,7 +147,7 @@
                 </h4>
             </div>
             <p>
-                <label for="amount">Maximum price:</label>
+                <label for="amount">Valor da Última Fatura:</label>
                 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
             </p>
 
@@ -209,10 +209,10 @@
             max: 10000,
             /*step: 11,*/
             slide: function (event, ui) {
-                $("#amount").val("$" + ui.value);
+                $("#amount").val("R$" + ui.value);
             }
         });
-        $("#amount").val("$" + $("#slider-range-min").slider("value"));
+        $("#amount").val("R$" + $("#slider-range-min").slider("value"));
     });
 </script>
 <script src="js/transicao.js"></script>
