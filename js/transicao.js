@@ -6,6 +6,8 @@ $(document).ready(function () {
     ];
     let num = 0;
     let tipolocal = '';
+    let ufload = '';
+    let uf = '';
     $('.right.button').click(() => {
         if (num <= 1 ) {
             num += 1;
@@ -77,4 +79,42 @@ $(document).ready(function () {
         tipolocal = $(this).attr('id');
         console.log(tipolocal);
     });
+
+    /*
+     * @todo popular select estados
+     */
+    $('#uf').on('mouseenter', function () {
+        if (ufload === '') {
+            ufload = 'loaded';
+            console.log("click estados");
+            $.ajax({
+                method: 'GET',
+                url: 'php/estados.php',
+                dataType: 'html'
+            })
+                .done(function (response) {
+                    $('#estados').html('<option> - selecione - </option>' + response);
+                    console.log(response);
+                })
+                .fail(function (response) {
+                    console.log(response);
+                });
+        }
+    });
+
+    $('#estados').change(function () {
+        uf = $('#estados').val();
+        console.log(uf);
+        $.ajax({
+            method: 'GET',
+            url: 'php/cidades.php',
+            dataType: 'html'
+        })
+
+            .done(function (response) {
+
+            })
+
+    })
+
 });
