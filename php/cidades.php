@@ -10,6 +10,11 @@ $conn = new PDO('mysql:host=localhost;dbname=luxsolar;charset=utf8', 'root', '84
 
 $uf = $_GET['uf'];
 
-$stmt = $conn->prepare('SELECT * FROM cidades WHERE uf_estado = ' . $uf);
+$stmt = $conn->prepare('SELECT * FROM cidades WHERE uf_estado = :uf');
+$stmt->bindParam(':uf', $uf);
 $stmt->execute();
 $result = $stmt->fetch();
+
+foreach ($stmt as $item) {
+    echo '<option value="' . $item['id'] . '">' . $item['nome'] . '</option>';
+}
