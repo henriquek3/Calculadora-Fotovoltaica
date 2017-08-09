@@ -45,6 +45,9 @@
             border: 5px solid #2185D0;
         }
 
+        .custokw {
+            padding-left: 35%;
+        }
     </style>
 </head>
 <body class="ui container">
@@ -82,6 +85,16 @@
                         <select class="ui search dropdown" name="cidades" id="cidades">
                             <option value="" selected>--</option>
                         </select>
+                    </div>
+                </div>
+            </div>
+            <div class="ui form">
+                <div class="inline fields custokw">
+                    <div class="three wide field">
+                        <label for="valorkwh">Custo kWh</label>
+                    </div>
+                    <div class="four wide field">
+                        <input type="text" id="valorkwh">
                     </div>
                 </div>
             </div>
@@ -190,8 +203,10 @@
     $('div.step:first').addClass('active');
     $('.card').attr('align', 'center');
     $('.card').css('height', '150px');
+    $('.custokw').hide();
 </script>
 <script>
+    let valkw = 'R$ ' + 0.67;
     $(function () {
         $("#slider-range-min").slider({
             range: "min",
@@ -204,6 +219,11 @@
             }
         });
         $("#amount").val("R$" + $("#slider-range-min").slider("value"));
+    });
+    $('#cidades').change(function () {
+        console.log('city change');
+        $('.custokw').show();
+        $('.custokw:last-child input').attr('value', valkw);
     });
 </script>
 <script src="js/transicao.js"></script>

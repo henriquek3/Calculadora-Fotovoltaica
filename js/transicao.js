@@ -122,5 +122,7 @@ $(document).ready(function () {
             .fail(function (responseText) {
                 console.log(responseText);
             });
-    })
+    });
+    
+
 });
