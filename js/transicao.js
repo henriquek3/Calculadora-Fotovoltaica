@@ -86,7 +86,6 @@ $(document).ready(function () {
     $('#uf').on('mouseenter', function () {
         if (ufload === '') {
             ufload = 'loaded';
-            console.log("click estados");
             $.ajax({
                 method: 'GET',
                 url: 'php/estados.php',
@@ -94,7 +93,7 @@ $(document).ready(function () {
             })
                 .done(function (response) {
                     $('#estados').html('<option> - selecione - </option>' + response);
-                    console.log(response);
+                    /*console.log(response);*/
                 })
                 .fail(function (response) {
                     console.log(response);
@@ -102,19 +101,26 @@ $(document).ready(function () {
         }
     });
 
+    /*
+     * @todo carregar cidades de acordo com o estado
+     */
     $('#estados').change(function () {
         uf = $('#estados').val();
-        console.log(uf);
+        /*console.log(uf);*/
         $.ajax({
             method: 'GET',
             url: 'php/cidades.php',
-            dataType: 'html'
+            dataType: 'html',
+            data: {
+                'uf': uf
+            }
         })
-
             .done(function (response) {
-
+                /* console.log(response); */
+                $('#cidades').html(response);
             })
-
+            .fail(function (responseText) {
+                console.log(responseText);
+            });
     })
-
 });
