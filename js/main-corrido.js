@@ -3,8 +3,8 @@
  */
 $('section').transition('hide');
 $('.ui.dropdown').dropdown();
-$('#tipoLocal').transition('hide');
-$('#consumo').transition('hide');
+$('#tipoLocal').transition('');
+$('#consumo').transition('');
 $('div.step:first').addClass('active');
 $('.card').attr('align', 'center');
 $('.card').css('height', '150px');

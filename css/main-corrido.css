@@ -1,0 +1,25 @@
+header:first-child {
+    margin-top: 10px;
+}
+
+.headerViewCalc {
+    margin-bottom: 30px;
+}
+
+.cardhover:hover {
+    border: 5px solid #2185D0;
+}
+
+.custokw, .custokwFatura {
+    padding-top: 30px;
+}
+
+#localizacao, #tipoLocal, #consumo {
+    height: 380px;
+    padding-top: 30px;
+}
+
+.ui.big.form {
+    padding-top: 30px;
+}
+
