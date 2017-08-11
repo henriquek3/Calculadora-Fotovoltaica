@@ -11,6 +11,7 @@ $('.card').css('height', '150px');
 $('.custokw').hide();
 
 let valkw = 'R$ ' + 0.67;
+
 $(function () {
     $("#slider-range-min").slider({
         range: "min",
@@ -22,7 +23,9 @@ $(function () {
             $("#amount").val("R$" + ui.value);
         }
     });
-    $("#amount").val("R$" + $("#slider-range-min").slider("value"));
+    let custobrl = $("#amount").val("R$" + $("#slider-range-min").slider("value"));
+    let vlr = valkw / custobrl;
+    console.log(vlr);
 });
 $('#cidades').change(function () {
     console.log('city change');
