@@ -6,7 +6,8 @@
  * Time: 13:34
  */
 
-$conn = new PDO('mysql:host=localhost;dbname=luxsolar;charset=utf8', 'root', '84089554');
+//$conn = new PDO('mysql:host=localhost;dbname=luxsolar;charset=utf8', 'root', '84089554');
+$conn = new PDO('mysql:host=localhost;dbname=luxsolar;charset=utf8', 'root', '');
 
 $uf = $_GET['uf'];
 
