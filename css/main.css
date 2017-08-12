@@ -6,8 +6,8 @@ header:first-child {
     margin-top: 10px;
 }
 
-.headerViewCalc {
-    margin-bottom: 30px;
+header {
+    padding-top: 65px;
 }
 
 #viewCalculadora {
@@ -24,7 +24,6 @@ header:first-child {
 
 #tipoLocal {
     margin-top: 0;
-    padding-top: 5.5%;
 }
 
 #consumo {
@@ -37,4 +36,18 @@ header:first-child {
 
 .custokw {
     padding-left: 35%;
+}
+
+.three.column.grid {
+    width: 100%;
+    margin: auto;
+    margin-top: -20px;
+}
+
+.imghouse {
+    width: 70px;
+}
+
+.custokwFatura {
+    padding-top: 30px;
 }
