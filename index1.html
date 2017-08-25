@@ -15,7 +15,7 @@
     <script src="vendor/components/jqueryui/jquery-ui.min.js"></script>
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="css/main-corrido.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <title>Calculadora</title>
 </head>
@@ -32,7 +32,7 @@
     </div>
 </header>
 <main>
-    <div class="" id="viewCalculadora">
+    <div class="ui attached segment" id="viewCalculadora">
         <!-- Localização -->
         <div class="ui green segment view" id="localizacao">
             <div class="headerViewCalc">
@@ -60,10 +60,10 @@
             <div class="ui form">
                 <div class="inline fields custokw">
                     <div class="three wide field">
-                        <label for="valorkwh">Custo kWh</label>
+                        <label for="valoruf">Custo por kWh</label>
                     </div>
                     <div class="four wide field">
-                        <input type="text" id="valorkwh">
+                        <input type="text" id="valoruf">
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                     <div class="ui fluid card" id="residencial">
                         <div class="content">
                             <div class="ui centered image">
-                                <img src="images/house.png">
+                                <img class="imghouse" src="images/house.png">
                             </div>
                         </div>
                         <div class="extra content">
@@ -131,26 +131,60 @@
             </p>
 
             <div id="slider-range-min"></div>
-            <div style="margin: auto;">
+            <div>
                 <div class="ui form">
                     <div class="inline fields custokwFatura">
                         <div class="three wide field">
-                            <label for="valorkwh">Custo kWh</label>
+                            <label for="valorkw">Consumo total em kWh</label>
                         </div>
                         <div class="four wide field">
-                            <input type="text" id="valorkwh">
+                            <input type="text" id="valorkw">
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
-                <div style="width:300px;margin:auto;padding-top: 40px;">
-                    <button class="fluid ui massive green button">CALCULAR</button>
-                </div>
+        </div>
+
+
+        <!-- Botões Nav -->
+        <div class="eight wide column btn-left-right">
+            <button class="ui left floated primary massive left labeled icon button" id="voltarButton">
+                <i class="left arrow icon"></i>
+                Voltar
+            </button>
+            <button class="ui right floated primary massive right labeled icon button" id="avancarButton">
+                <i class="right arrow icon"></i>
+                Avançar
+            </button>
+        </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="ui three bottom attached steps">
+        <div class="step">
+            <i class="marker icon"></i>
+            <div class="content">
+                <div class="title">Localização</div>
+                <div class="description">Escolha o local da instalação</div>
+            </div>
+        </div>
+        <div class="step">
+            <i class="building icon"></i>
+            <div class="content">
+                <div class="title">Tipo do Local</div>
+                <div class="description">Ambiente da instalação</div>
+            </div>
+        </div>
+        <div class="disabled step">
+            <i class="plug icon"></i>
+            <div class="content">
+                <div class="title">Consumo Médio</div>
+                <div class="description">Gasto médio anual em KWh</div>
             </div>
         </div>
     </div>
 </main>
+
 <!-- Pagina de Resultados -->
 <section class="ui container" id="resultado">
     <div class="ui horizontal raised segments">
@@ -196,16 +230,16 @@
     </div>
     <div>
         <div style="width:500px;margin:auto;">
-            <button class="fluid ui animated fade massive yellow button">
-                <div class="visible content">SOLICITAR ORÇAMENTO</div>
-                <div class="hidden content">SOLICITAR ORÇAMENTO</div>
+            <button class="fluid ui animated fade massive yellow button" onclick="location.href = 'index1.html';">
+                <span class="visible content">SOLICITAR ORÇAMENTO</span>
+                <span class="hidden content">SOLICITAR ORÇAMENTO</span>
             </button>
         </div>
     </div>
 </section>
 
 <!-- Javascript Personalizado -->
-<script src="js/main-corrido.js"></script>
-<script src="js/transicao-corrido.js"></script>
+<script src="js/main.js"></script>
+<script src="js/transicao.js"></script>
 </body>
 </html>

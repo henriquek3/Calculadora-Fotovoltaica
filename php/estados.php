@@ -9,10 +9,10 @@
 //$conn = new PDO('mysql:host=localhost;dbname=luxsolar;charset=utf8', 'root', '84089554');
 $conn = new PDO('mysql:host=localhost;dbname=luxsolar;charset=utf8', 'root', '');
 
-$stmt = $conn->prepare('SELECT * FROM estados');
+$stmt = $conn->prepare("SELECT * FROM estados WHERE ativo = 'S' ORDER BY nome");
 $stmt->execute();
-$result = $stmt->fetch();
-
-foreach ($stmt as $item) {
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+print_r($result);
+foreach ($result as $item) {
     echo '<option value="' . $item['uf_nome'] . '">' . $item['nome'] . '</option>';
 }

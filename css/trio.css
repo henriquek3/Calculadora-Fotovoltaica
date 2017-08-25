@@ -1,0 +1,13 @@
+header {
+    margin-top: 80px;
+}
+
+main {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.ui.segment {
+    max-width: 33%;
+    height: 400px;
+}

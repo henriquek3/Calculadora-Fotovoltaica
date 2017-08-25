@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Libs de terceiros -->
+    <link rel="stylesheet" href="vendor/semantic/ui/dist/semantic.css">
+    <script src="vendor/components/jquery/jquery.js"></script>
+    <script src="vendor/semantic/ui/dist/semantic.js"></script>
+    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/slider.css">
+    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/all.css">
+    <script src="vendor/components/jqueryui/jquery-ui.min.js"></script>
+
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/trio.css">
+
+    <title>Calculadora</title>
+</head>
+<body class="ui container fluid">
+<header>
+    <div class="ui center aligned header">
+        <h2 class="ui icon header">
+            <i class="blue calculator icon"></i>
+            <span class="content">
+                Calculadora Solar
+                <span class="sub header">Com algumas informações vamos calcular o sistema de captação fotovoltaica.</span>
+            </span>
+        </h2>
+    </div>
+</header>
+<main>
+    <div class="ui horizontal segments">
+        <div class="ui segment">
+            <p></p>
+            <p>Para iniciarmos precisamos saber quanto é sua media de consumo mensal.</p>
+            <p></p>
+        </div>
+        <div class="ui segment">
+            <p></p>
+            <div class="ui big form">
+                <div class="">
+                    <div class="field" id="uf">
+                        <label for="estados">Estados</label>
+                        <select class="ui search dropdown" name="estados" id="estados">
+                            <option value="" selected> --</option>
+                        </select>
+                    </div>
+                    <div class="field" id="selectCidades">
+                        <label for="cidades">Cidades</label>
+                        <select class="ui search dropdown" name="cidades" id="cidades">
+                            <option value="" selected>--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="ui form">
+                <div class="inline field custokw">
+                    <label for="valorkwEstado">Tarifa</label>
+                    <input id="valorkwEstado">
+                </div>
+            </div>
+            <p></p>
+        </div>
+        <div class="ui segment">
+            <p></p>
+            <div class="ui big form">
+                <div class="">
+                    <div class="field" id="uf">
+                        <label for="consumokwh">Consumo em kWh</label>
+                        <input type="text" id="consumokwh">
+                    </div>
+                    <div class="field" id="selectCidadesa">
+                        <label for="asd">Cidades</label>
+                        <input type="text" id="asd">
+                    </div>
+                </div>
+            </div>
+            <div class="ui form">
+                <div class="inline field custokw">
+                    <label for="valorkwEstadoa">Tarifa</label>
+                    <input id="valorkwEstadoa">
+                </div>
+            </div>
+            <p></p>
+        </div>
+    </div>
+</main>
+
+<script src="js/trio.js"></script>
+</body>
+</html>

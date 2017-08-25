@@ -1,5 +1,5 @@
-header:first-child {
-    margin-top: 10px;
+header {
+    margin-top: 80px;
 }
 
 .headerViewCalc {
@@ -12,6 +12,7 @@ header:first-child {
 
 .custokw, .custokwFatura {
     padding-top: 30px;
+    text-align: center;
 }
 
 #localizacao, #tipoLocal, #consumo {
@@ -21,5 +22,11 @@ header:first-child {
 
 .ui.big.form {
     padding-top: 30px;
+}
+
+#consumo {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-bottom: 30px;
 }
 

@@ -15,7 +15,7 @@
     <script src="vendor/components/jqueryui/jquery-ui.min.js"></script>
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main-corrido.css">
 
     <title>Calculadora</title>
 </head>
@@ -32,12 +32,12 @@
     </div>
 </header>
 <main>
-    <div class="ui attached segment" id="viewCalculadora">
+    <div class="" id="viewCalculadora">
         <!-- Localização -->
         <div class="ui green segment view" id="localizacao">
             <div class="headerViewCalc">
                 <h4 class="ui center aligned icon header">
-                    <i class="circular green map outline icon"></i>
+                    <i class="circular green location arrow outline icon"></i>
                     Local da Instalação
                 </h4>
             </div>
@@ -58,61 +58,9 @@
                 </div>
             </div>
             <div class="ui form">
-                <div class="inline fields custokw">
-                    <div class="three wide field">
-                        <label for="valoruf">Custo por kWh</label>
-                    </div>
-                    <div class="four wide field">
-                        <input type="text" id="valoruf">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tipo do Local -->
-        <div class="ui blue segment view" id="tipoLocal">
-            <div class="headerViewCalc">
-                <h4 class="ui center aligned icon header">
-                    <i class="circular green building outline icon"></i>
-                    Informe o tipo de local
-                </h4>
-            </div>
-            <div class="ui three column grid">
-                <div class="column">
-                    <div class="ui fluid card" id="residencial">
-                        <div class="content">
-                            <div class="ui centered image">
-                                <img class="imghouse" src="images/house.png">
-                            </div>
-                        </div>
-                        <div class="extra content">
-                            <span class="ui centered header">Residencial</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="ui fluid card" id="rural">
-                        <div class="content">
-                            <div class="ui centered image">
-                                <img src="images/farm.png">
-                            </div>
-                        </div>
-                        <div class="extra content">
-                            <span class="ui centered header">Rural</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="ui fluid card" id="industrial">
-                        <div class="content">
-                            <div class="image">
-                                <img src="images/industria.png">
-                            </div>
-                        </div>
-                        <div class="extra content">
-                            <span class="ui centered header">Industrial</span>
-                        </div>
-                    </div>
+                <div class="inline field custokw">
+                    <label for="valorkwEstado">Tarifa</label>
+                    <input id="valorkwEstado">
                 </div>
             </div>
         </div>
@@ -127,64 +75,30 @@
             </div>
             <p>
                 <label for="amount">Valor da Última Fatura:</label>
-                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                <input id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
             </p>
 
             <div id="slider-range-min"></div>
-            <div>
+            <div style="margin: auto;">
                 <div class="ui form">
                     <div class="inline fields custokwFatura">
                         <div class="three wide field">
-                            <label for="valorkw">Consumo total em kWh</label>
+                            <label for="valorkwh">Custo kWh</label>
                         </div>
                         <div class="four wide field">
-                            <input type="text" id="valorkw">
+                            <input id="valorkwh">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-        <!-- Botões Nav -->
-        <div class="eight wide column btn-left-right">
-            <button class="ui left floated primary massive left labeled icon button" id="voltarButton">
-                <i class="left arrow icon"></i>
-                Voltar
-            </button>
-            <button class="ui right floated primary massive right labeled icon button" id="avancarButton">
-                <i class="right arrow icon"></i>
-                Avançar
-            </button>
-        </div>
-    </div>
-
-    <!-- Steps -->
-    <div class="ui three bottom attached steps">
-        <div class="step">
-            <i class="marker icon"></i>
-            <div class="content">
-                <div class="title">Localização</div>
-                <div class="description">Escolha o local da instalação</div>
-            </div>
-        </div>
-        <div class="step">
-            <i class="building icon"></i>
-            <div class="content">
-                <div class="title">Tipo do Local</div>
-                <div class="description">Ambiente da instalação</div>
-            </div>
-        </div>
-        <div class="disabled step">
-            <i class="plug icon"></i>
-            <div class="content">
-                <div class="title">Consumo Médio</div>
-                <div class="description">Gasto médio anual em KWh</div>
+            <div>
+                <div style="width:300px;margin:auto;padding-top: 40px;">
+                    <button class="fluid ui massive green button">CALCULAR</button>
+                </div>
             </div>
         </div>
     </div>
 </main>
-
 <!-- Pagina de Resultados -->
 <section class="ui container" id="resultado">
     <div class="ui horizontal raised segments">
@@ -230,7 +144,7 @@
     </div>
     <div>
         <div style="width:500px;margin:auto;">
-            <button class="fluid ui animated fade massive yellow button" onclick="location.href = 'index.html';">
+            <button class="fluid ui animated fade massive yellow button">
                 <span class="visible content">SOLICITAR ORÇAMENTO</span>
                 <span class="hidden content">SOLICITAR ORÇAMENTO</span>
             </button>
@@ -239,7 +153,7 @@
 </section>
 
 <!-- Javascript Personalizado -->
-<script src="js/main.js"></script>
-<script src="js/transicao.js"></script>
+<script src="js/main-corrido.js"></script>
+<script src="js/transicao-corrido.js"></script>
 </body>
 </html>
