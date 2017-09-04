@@ -1,0 +1,40 @@
+header {
+    margin-top: 80px;
+}
+
+main {
+    margin-left: 20px;
+    margin-right: 20px;    
+}
+
+.wrapper{ 
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.ui.segment {
+	width: 75%;
+    height: 400px;   
+}
+.tarf{
+	position: absolute;
+	top: 45%;
+	padding-left: 67%;
+}
+.conta-energia {
+	float: right;
+}
+.dedo-icon{
+	float: left;
+    padding-top: 393px;
+    margin-left: 428px;
+}
+.texto-modal{
+	float: left;
+	width: 300px;
+	display: inline;
+}
