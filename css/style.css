@@ -20,21 +20,30 @@ main {
 	width: 75%;
     height: 400px;   
 }
-.tarf{
-	position: absolute;
-	top: 45%;
-	padding-left: 67%;
+
+.scrolling.content{
+    height: 360px;
 }
-.conta-energia {
-	float: right;
-}
-.dedo-icon{
-	float: left;
-    padding-top: 393px;
-    margin-left: 428px;
-}
+
 .texto-modal{
-	float: left;
-	width: 300px;
-	display: inline;
+    position: absolute;
+    max-width: 326px;
+}
+
+.like-icon{
+    position: absolute;
+    top: 318px;
+    right: 360px;
+    text-align: -webkit-right;
+}
+
+.img-conta-energia {
+    position: absolute;
+    right: 50px;
+    top: 69px;
+}
+
+.big.primary.button {
+    width: 300px;
+    font-size: 20px;
 }

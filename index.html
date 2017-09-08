@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="vendor/semantic/ui/dist/semantic.css">
     <script src="vendor/components/jquery/jquery.js"></script>
     <script src="vendor/semantic/ui/dist/semantic.js"></script>
-    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/slider.css">
-    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/all.css">
-    <script src="vendor/components/jqueryui/jquery-ui.min.js"></script>
 
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="css/style.css">
@@ -53,34 +50,28 @@
                 <h3>O próximo passo é a localização <i class="circular green marker icon"></i></h3>
             </div>
             <p></p>
-            <div style="position: relative;">
-                <div class="ui big form" align="center">
-                    <div class="inline field">
-                        <label for="uf">Estado:</label>
-                        <select name="estados" id="uf">
-                            <option value="01">Estados</option>
-                        </select>
-                    </div>
-                    <div class="inline field">
-                        <label for="mun">Cidade:</label>
-                        <select name="municipio" id="mun">
-                            <option value="01">Cidades</option>
-                        </select>
-                    </div>
+            <div class="ui big form" align="center">
+                <div class="inline field" id="uf">
+                    <label for="estados">Estado:</label>
+                    <select name="estados" id="estados">
+                        <option value="01">Estados</option>
+                    </select>
                 </div>
-            </div>
-            <div class="tarf">
-                <div class="ui form">
-                    <div class="inline field">
-                        <label for="tarifa">Tarifa aprox.</label>
-                        <input type="text" value="R$ 0.67" id="tarifa" size="6">
-                    </div>
+                <div class="inline field">
+                    <label for="cidades">Cidade:</label>
+                    <select class="ui search dropdown" name="municipio" id="cidades">
+                        <option value="01">Cidades</option>
+                    </select>
+                </div>
+                <div class="inline field tarifa">
+                    <label for="tarifa">Tarifa aprox.</label>
+                    <input type="text" value="R$ 0.67" id="tarifa" size="6">
                 </div>
             </div>
             <p></p>
             <div>
                 <div  align="center">
-                    <button style="width: 300px;" class="ui primary button">Calcular</button>
+                    <button class="ui big primary button"><span class="txt-button">Calcular</span></button>
                 </div>
             </div>
         </div>
@@ -88,30 +79,35 @@
 </main>
 
 <!--Modal-->
-<div class="ui modal">
+<div class="ui small modal">
   <div class="header">Como Encontrar a Média?</div>
   <div class="scrolling content">
   <div class="texto-modal"> 
-      <p>Para que possamos realizar o cálculo vamos precisar saber o consumo médio anual, e então poderemos saber qual tipo de sistema é o mais indicado de acordo com seu consumo de energia elétrica.</p>     
+      <p>
+          Verifique em sua <b>conta de energia</b> elétrica
+          o campo consumo médio anual,
+          e então poderemos saber qual tipo de sistema
+          é o mais indicado de acordo com seu consumo.
+
+      </p>
   </div>
-  <div class="dedo-icon">
-        <i class="huge pointing right icon"></i>
-        <p>Aqui fica o seu consumo!</p>
+  <div class="like-icon">
+        <i class="huge pointing right blue icon"></i>
+        <p><b>Aqui registra a média!</b></p>
     </div>
-    <div class="conta-energia">    
-        <img src="images/energia.png" alt="">
+    <div class="img-conta-energia">
+        <img src="images/energia-edit.png" alt="">
     </div>
   </div>
   <div class="actions">
-    <div class="ui approve button">Approve</div>
-    <div class="ui button">Neutral</div>
-    <div class="ui cancel button">Cancel</div>
+    <div class="ui approve blue button">Ok</div>
   </div>
 </div>
 
 <script src="js/main.js"></script>
 <script>
     $('.ui.modal').modal('attach events','a','show');
+    $('select').dropdown();
 </script>
 </body>
 </html>
