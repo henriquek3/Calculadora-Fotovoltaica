@@ -1,8 +1,7 @@
 /**
  * Created by henri on 08/09/2017.
  */
-///<reference path="CalculoFotoVoltaico.ts"/>
-
+///<reference path="src/CalculoFotoVoltaico.ts"/>
 module App{
     let contaEnergia: number;
     let energiaGerada: number;
@@ -30,5 +29,6 @@ module App{
         rendimentoModulo,taxaDisponibilidade,
         energiaAnualGerada
     );
+
     console.log(calculo.execute());
 }
