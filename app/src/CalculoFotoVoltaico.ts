@@ -16,7 +16,7 @@ module App{
             public taxaDisponibilidade: number,
             public energiaAnualGerada: number
         ){};
-        execute(): string{
+        execute(): any{
             let contaEnergia = this.contaEnergia;
             let energiaGerada = this.energiaGerada;
             let valorTarifa = this.valorTarifa;
@@ -26,11 +26,14 @@ module App{
             let rendimentoModulo = this.rendimentoModulo;
             let taxaDisponibilidade = this.taxaDisponibilidade;
             let energiaAnualGerada = this.energiaAnualGerada;
-            let quantidadeModulos = (energiaGerada * potenciaModulo) / (hsp * areaModulo * rendimentoModulo * 365);
-            let potenciaGerador = (quantidadeModulos * potenciaModulo) / 1000;
-            let areaInstalacao = quantidadeModulos * areaModulo;
-            let result = 'Quantidade de Módulos: ' + quantidadeModulos + ' Potencia do Gerador: ' + potenciaGerador + ' Area da instalação: ' + areaInstalacao;
-            return result;
+            let potModl = ((potenciaModulo / 100) * rendimentoModulo).toPrecision(4);
+            let a = (energiaGerada * potModl).toFixed(4);
+            let b = (hsp * areaModulo * potModl * 365).toFixed(2);
+            let quantidadeModulos = (b / a).toPrecision(2);
+            //let potenciaGerador = (quantidadeModulos * (rendimentoModulo * (potenciaModulo / 100))) / 1000;
+            //let areaInstalacao = quantidadeModulos * areaModulo;
+            //let result = {'Qtd de Mdls' : quantidadeModulos.toPrecision(1), 'Pot Gerador' : potenciaGerador.toPrecision(4), 'Area inst' : areaInstalacao.toFixed(2)};
+            return quantidadeModulos;
         };
     }
 }
