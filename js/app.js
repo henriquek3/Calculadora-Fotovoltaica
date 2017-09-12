@@ -4,8 +4,8 @@
 ///<reference path="ICalculoFotoVoltaico.ts"/>
 var App;
 (function (App) {
-    var CalculoFotoVoltaico = (function () {
-        function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada) {
+    var CalculoFotoVoltaico = /** @class */ (function () {
+        function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
             this.valorTarifa = valorTarifa;
@@ -15,6 +15,7 @@ var App;
             this.rendimentoModulo = rendimentoModulo;
             this.taxaDisponibilidade = taxaDisponibilidade;
             this.energiaAnualGerada = energiaAnualGerada;
+            this.valorOrcamento = valorOrcamento;
         }
         ;
         CalculoFotoVoltaico.prototype.execute = function () {
@@ -26,15 +27,24 @@ var App;
             var areaModulo = this.areaModulo;
             var rendimentoModulo = this.rendimentoModulo;
             var taxaDisponibilidade = this.taxaDisponibilidade;
-            var energiaAnualGerada = this.energiaAnualGerada;
-            var potModl = ((potenciaModulo / 100) * rendimentoModulo).toPrecision(4);
-            var a = (energiaGerada * potModl).toFixed(4);
-            var b = (hsp * areaModulo * potModl * 365).toFixed(2);
-            var quantidadeModulos = (b / a).toPrecision(2);
-            //let potenciaGerador = (quantidadeModulos * (rendimentoModulo * (potenciaModulo / 100))) / 1000;
-            //let areaInstalacao = quantidadeModulos * areaModulo;
-            //let result = {'Qtd de Mdls' : quantidadeModulos.toPrecision(1), 'Pot Gerador' : potenciaGerador.toPrecision(4), 'Area inst' : areaInstalacao.toFixed(2)};
-            return quantidadeModulos;
+            var valorOrcamento = this.valorOrcamento;
+            var quantidadeModulos;
+            var potenciaGeradorSolar;
+            var areaInstalacao;
+            var energiaGeradaAnual;
+            var valorPrevistoSistema;
+            quantidadeModulos = Math.ceil((energiaGerada * 12) / (hsp * areaModulo * rendimentoModulo * 365));
+            potenciaGeradorSolar = (quantidadeModulos * potenciaModulo) / 1000;
+            areaInstalacao = quantidadeModulos * areaModulo;
+            energiaGeradaAnual = energiaGerada * 12;
+            valorPrevistoSistema = valorOrcamento / potenciaGeradorSolar;
+            return {
+                "QtdMod": quantidadeModulos,
+                "potGer": potenciaGeradorSolar.toPrecision(3),
+                "areaInst": areaInstalacao,
+                "enerAnual": energiaGeradaAnual.toPrecision(6),
+                "valorSis": valorPrevistoSistema
+            };
         };
         ;
         return CalculoFotoVoltaico;
@@ -56,15 +66,16 @@ var App;
     var rendimentoModulo;
     var taxaDisponibilidade;
     var energiaAnualGerada;
+    var valorOrcamento;
     contaEnergia = 733.29;
     energiaGerada = 965;
     valorTarifa = 0.76;
     hsp = 4.27;
     potenciaModulo = 325;
     areaModulo = 1.92;
-    rendimentoModulo = 16.74;
+    rendimentoModulo = 0.1674;
     taxaDisponibilidade = 50;
-    energiaAnualGerada = 11.578;
-    var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada);
+    valorOrcamento = 44889.31;
+    var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento);
     console.log(calculo.execute());
 })(App || (App = {}));

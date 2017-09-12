@@ -14,7 +14,8 @@ module App{
             public areaModulo: number,
             public rendimentoModulo: number,
             public taxaDisponibilidade: number,
-            public energiaAnualGerada: number
+            public energiaAnualGerada: number,
+            public valorOrcamento: number
         ){};
         execute(): any{
             let contaEnergia = this.contaEnergia;
@@ -24,16 +25,25 @@ module App{
             let potenciaModulo = this.potenciaModulo;
             let areaModulo = this.areaModulo;
             let rendimentoModulo = this.rendimentoModulo;
-            let taxaDisponibilidade = this.taxaDisponibilidade;
-            let energiaAnualGerada = this.energiaAnualGerada;
-            let potModl = ((potenciaModulo / 100) * rendimentoModulo).toPrecision(4);
-            let a = (energiaGerada * potModl).toFixed(4);
-            let b = (hsp * areaModulo * potModl * 365).toFixed(2);
-            let quantidadeModulos = (b / a).toPrecision(2);
-            //let potenciaGerador = (quantidadeModulos * (rendimentoModulo * (potenciaModulo / 100))) / 1000;
-            //let areaInstalacao = quantidadeModulos * areaModulo;
-            //let result = {'Qtd de Mdls' : quantidadeModulos.toPrecision(1), 'Pot Gerador' : potenciaGerador.toPrecision(4), 'Area inst' : areaInstalacao.toFixed(2)};
-            return quantidadeModulos;
+            let taxaDisponibilidade = this.taxaDisponibilidade;         
+            let valorOrcamento = this.valorOrcamento;
+            let quantidadeModulos:number;
+            let potenciaGeradorSolar: number;
+            let areaInstalacao: number;
+            let energiaGeradaAnual: number;
+            let valorPrevistoSistema: number;
+            quantidadeModulos = Math.ceil((energiaGerada * 12) / (hsp * areaModulo * rendimentoModulo * 365));
+            potenciaGeradorSolar = (quantidadeModulos * potenciaModulo) / 1000;
+            areaInstalacao = quantidadeModulos * areaModulo;
+            energiaGeradaAnual = energiaGerada * 12;
+            valorPrevistoSistema = valorOrcamento / potenciaGeradorSolar;
+            return {
+                "QtdMod" : quantidadeModulos,
+                "potGer" : potenciaGeradorSolar.toPrecision(3),
+                "areaInst" : areaInstalacao,
+                "enerAnual" : energiaGeradaAnual.toPrecision(6),
+                "valorSis" : valorPrevistoSistema
+            };
         };
     }
 }
