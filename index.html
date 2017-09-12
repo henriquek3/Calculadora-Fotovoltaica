@@ -10,16 +10,13 @@
     <link rel="stylesheet" href="vendor/semantic/ui/dist/semantic.css">
     <script src="vendor/components/jquery/jquery.js"></script>
     <script src="vendor/semantic/ui/dist/semantic.js"></script>
-    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/slider.css">
-    <link rel="stylesheet" href="vendor/components/jqueryui/themes/base/all.css">
-    <script src="vendor/components/jqueryui/jquery-ui.min.js"></script>
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="css/main-corrido.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <title>Calculadora</title>
 </head>
-<body class="ui container">
+<body class="ui container fluid">
 <header>
     <div class="ui center aligned header">
         <h2 class="ui icon header">
@@ -32,128 +29,86 @@
     </div>
 </header>
 <main>
-    <div class="" id="viewCalculadora">
-        <!-- Localização -->
-        <div class="ui green segment view" id="localizacao">
-            <div class="headerViewCalc">
-                <h4 class="ui center aligned icon header">
-                    <i class="circular green location arrow outline icon"></i>
-                    Local da Instalação
-                </h4>
+    <div class="wrapper">
+        <div class="ui basic segment">
+            <div style="text-align: center;">
+                <h3 class="ui header">Informe seu consumo médio anual em Quilowatt-hora(kWh), caso não saiba <a href="#">clique aqui!</a></h3>                
             </div>
-            <div class="ui big form">
-                <div class="two fields">
-                    <div class="field" id="uf">
-                        <label for="estados">Estados</label>
-                        <select class="ui search dropdown" name="estados" id="estados">
-                            <option value="" selected> --</option>
-                        </select>
-                    </div>
-                    <div class="field" id="selectCidades">
-                        <label for="cidades">Cidades</label>
-                        <select class="ui search dropdown" name="cidades" id="cidades">
-                            <option value="" selected>--</option>
-                        </select>
+            <p></p>
+            <br>
+            <div id="pconsumo">
+                <div class="ui big form" align="center">
+                    <div class="inline field">
+                        <label for="kwh">Média kWh</label>
+                        <input type="number" id="kwh">
                     </div>
                 </div>
             </div>
-            <div class="ui form">
-                <div class="inline field custokw">
-                    <label for="valorkwEstado">Tarifa</label>
-                    <input id="valorkwEstado">
+            <br>
+            <p></p>
+            <div style="text-align: center;">
+                <h3>O próximo passo é a localização <i class="circular green marker icon"></i></h3>
+            </div>
+            <p></p>
+            <div class="ui big form" align="center">
+                <div class="inline field" id="uf">
+                    <label for="estados">Estado:</label>
+                    <select name="estados" id="estados">
+                        <option value="01">Estados</option>
+                    </select>
+                </div>
+                <div class="inline field">
+                    <label for="cidades">Cidade:</label>
+                    <select class="ui search dropdown" name="municipio" id="cidades">
+                        <option value="01">Cidades</option>
+                    </select>
+                </div>
+                <div class="inline field tarifa">
+                    <label for="tarifa">Tarifa aprox.</label>
+                    <input type="text" value="R$ 0.67" id="tarifa" size="6">
                 </div>
             </div>
-        </div>
-
-        <!-- Consumo Médio -->
-        <div class="ui red segment view" id="consumo">
-            <div class="headerViewCalc">
-                <h4 class="ui center aligned icon header">
-                    <i class="circular green line chart outline icon"></i>
-                    Levantamento de Consumo
-                </h4>
-            </div>
-            <p>
-                <label for="amount">Valor da Última Fatura:</label>
-                <input id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            </p>
-
-            <div id="slider-range-min"></div>
-            <div style="margin: auto;">
-                <div class="ui form">
-                    <div class="inline fields custokwFatura">
-                        <div class="three wide field">
-                            <label for="valorkwh">Custo kWh</label>
-                        </div>
-                        <div class="four wide field">
-                            <input id="valorkwh">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <p></p>
             <div>
-                <div style="width:300px;margin:auto;padding-top: 40px;">
-                    <button class="fluid ui massive green button">CALCULAR</button>
+                <div  align="center">
+                    <button class="ui big primary button"><span class="txt-button">Calcular</span></button>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 </main>
-<!-- Pagina de Resultados -->
-<section class="ui container" id="resultado">
-    <div class="ui horizontal raised segments">
-        <div class="ui orange segment">
-            <h4 class="ui header">Valor de Investimento</h4>
-            <div class="ui divider"></div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-        </div>
-        <div class="ui green segment">
-            <h4 class="ui header">Sistema Indicado</h4>
-            <div class="ui divider"></div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-        </div>
-        <div class="ui blue segment">
-            <h4 class="ui header">Retorno de Investimento</h4>
-            <div class="ui divider"></div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-        </div>
-    </div>
-    <div>
-        <div style="width:500px;margin:auto;">
-            <button class="fluid ui animated fade massive yellow button">
-                <span class="visible content">SOLICITAR ORÇAMENTO</span>
-                <span class="hidden content">SOLICITAR ORÇAMENTO</span>
-            </button>
-        </div>
-    </div>
-</section>
 
-<!-- Javascript Personalizado -->
-<script src="js/main-corrido.js"></script>
-<script src="js/transicao-corrido.js"></script>
+<!--Modal-->
+<div class="ui small modal">
+  <div class="header">Como Encontrar a Média?</div>
+  <div class="scrolling content">
+  <div class="texto-modal"> 
+      <p>
+          Verifique em sua <b>conta de energia</b> elétrica
+          o campo consumo médio anual,
+          e então poderemos saber qual tipo de sistema
+          é o mais indicado de acordo com seu consumo.
+
+      </p>
+  </div>
+  <div class="like-icon">
+        <i class="huge pointing right blue icon"></i>
+        <p><b>Aqui registra a média!</b></p>
+    </div>
+    <div class="img-conta-energia">
+        <img src="images/energia-edit.png" alt="">
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui approve blue button">Ok</div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/app.js"></script>
+<script>
+    $('.ui.modal').modal('attach events','a','show');
+    $('select').dropdown();
+</script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+header {
+    margin-top: 80px;
+}
+
+main {
+    margin-left: 20px;
+    margin-right: 20px;    
+}
+
+.wrapper{ 
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.ui.segment {
+	width: 75%;
+    height: 400px;   
+}
+
+.scrolling.content{
+    height: 360px;
+}
+
+.texto-modal{
+    position: absolute;
+    max-width: 326px;
+}
+
+.like-icon{
+    position: absolute;
+    top: 318px;
+    right: 360px;
+    text-align: -webkit-right;
+}
+
+.img-conta-energia {
+    position: absolute;
+    right: 50px;
+    top: 69px;
+}
+
+.big.primary.button {
+    width: 300px;
+    font-size: 20px;
+}
