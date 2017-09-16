@@ -10,11 +10,14 @@ $(document).ready(function () {
             $.ajax({
                 method: 'GET',
                 url: 'php/estados.php',
-                dataType: 'html'
+                dataType: 'json'
             })
-            .done(function (response) {
-                $('#estados').html('<option> - selecione - </option>' + response);
-                /*console.log(response);*/
+            .done(function (response) {                
+                let html = '';
+                for (let dados of response){                                        
+                    html += '<option value="' + dados.uf_nome + '" data-tarifa="' + dados.tarifa + '">' + dados.nome + '</option>';                    
+                    $('#estados').html('<option> - selecione - </option>' + html);
+                }                                            
             })
             .fail(function (response) {
                 console.log(response);
@@ -26,19 +29,24 @@ $(document).ready(function () {
      * @todo carregar cidades de acordo com o estado
      */
     $('#estados').change(function () {
-        uf = $('#estados').val();
-        /*console.log(uf);*/
+        $uf = $(this);        
+        uf = $uf.val();
+        tf = $uf.find(':selected').data('tarifa');
+        console.log(uf,tf);
         $.ajax({
             method: 'GET',
             url: 'php/cidades.php',
-            dataType: 'html',
+            dataType: 'json',
             data: {
                 'uf': uf
             }
         })
         .done(function (response) {
-            /* console.log(response); */
-            $('#cidades').html(response);
+            let html = '';                        
+            for(let dados of response){
+                html += '<option value="' + dados.cidade_codigo + '">' + dados.nome + '</option>';
+                $('#cidades').html(html);
+            }
         })
         .fail(function (responseText) {
             console.log(responseText);

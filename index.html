@@ -32,15 +32,20 @@
     <div class="wrapper">
         <div class="ui basic segment">
             <div style="text-align: center;">
-                <h3 class="ui header">Informe seu consumo médio anual em Quilowatt-hora(kWh), caso não saiba <a href="#">clique aqui!</a></h3>                
+                <h3 class="">Informe a média anual de consumo em Quilowatt-Hora <!--, caso não saiba <a href="#">clique aqui!</a>--> <i class="circular green lightning icon"></i></h3>
             </div>
             <p></p>
             <br>
             <div id="pconsumo">
-                <div class="ui big form" align="center">
-                    <div class="inline field">
-                        <label for="kwh">Média kWh</label>
-                        <input type="number" id="kwh">
+                <div class="ui big form">
+                    <div class="inline fields">
+                        <div class="two wide field">
+                            <label for="kwh">Média kWh</label>
+                        </div>
+                        <div class="eight wide field">
+                            <input type="text" id="kwh" max="5">
+                            <span id="find-media"><a href="#">Encontrar média?</a></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,23 +55,38 @@
                 <h3>O próximo passo é a localização <i class="circular green marker icon"></i></h3>
             </div>
             <p></p>
-            <div class="ui big form" align="center">
-                <div class="inline field" id="uf">
-                    <label for="estados">Estado:</label>
-                    <select name="estados" id="estados">
-                        <option value="01">Estados</option>
-                    </select>
+            <div class="ui big form">
+                <div class="inline fields" id="uf">
+                    <div class="two wide field">
+                        <label for="estados">Estado:</label>
+                    </div>
+                    <div class="six wide field">
+                        <select name="estados" id="estados">
+                            <option value="01">Estados</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="inline field">
-                    <label for="cidades">Cidade:</label>
-                    <select class="ui search dropdown" name="municipio" id="cidades">
-                        <option value="01">Cidades</option>
-                    </select>
+                <div class="inline fields">
+                    <div class="two wide field">
+                        <label for="cidades">Cidade:</label>
+                    </div>
+                    <div class="six wide field">
+                        <select class="ui search dropdown" name="municipio" id="cidades">
+                            <option value="01">Cidades</option>
+                        </select>                        
+                    </div>
                 </div>
-                <div class="inline field tarifa">
-                    <label for="tarifa">Tarifa aprox.</label>
-                    <input type="text" value="R$ 0.67" id="tarifa" size="6">
-                </div>
+                <div class="inline fields">
+                    <div class="two wide field">
+                        <label for="tarifa">Tarifa:</label>                        
+                    </div>
+                    <div class="six wide field">
+                        <div class="ui tarifa left labeled input">                    
+                            <div class="ui basic label">R$</div>
+                            <input type="text" value="0.67" id="tarifa" maxlength="6">                        
+                        </div>                            
+                    </div>
+                </div>                    
             </div>
             <p></p>
             <div>
@@ -99,7 +119,7 @@
     </div>
   </div>
   <div class="actions">
-    <div class="ui approve blue button">Ok</div>
+    <div class="ui approve blue button">Entendi</div>
   </div>
 </div>
 

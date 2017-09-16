@@ -47,3 +47,17 @@ main {
     width: 300px;
     font-size: 20px;
 }
+
+/*
+ * O retorno dos ID's
+*/
+
+#kwh {
+  max-width: 252px;
+}
+#tarifa {
+  max-width: 198px;
+}
+#find-media {
+  font-size: 14px;
+}

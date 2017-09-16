@@ -1,1 +1,1 @@
-tsc app\app.ts --out js\app.js
+tsc app\app.ts --out js\app.js --w
