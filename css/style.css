@@ -7,7 +7,7 @@ main {
     margin-right: 20px;    
 }
 
-.wrapper{ 
+.wrapper{
   display: -webkit-flex;
   display: flex;
   -webkit-align-items: center;
@@ -60,4 +60,15 @@ main {
 }
 #find-media {
   font-size: 14px;
+}
+
+.outer {
+    position: relative;
+    width: 100%;
+}
+
+.inner {
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
 }

@@ -30,6 +30,12 @@ module App{
         rendimentoModulo,taxaDisponibilidade,
         energiaAnualGerada,valorOrcamento
     );
-
-    console.log(calculo.execute());
+    let obj: any;
+    obj = calculo.execute();
+    console.log(obj);
+    console.log(obj.QtdMod);
+    console.log(obj.areaInst);
+    console.log(obj.enerAnual);
+    console.log(obj.potGer);
+    console.log(obj.valorSis);
 }
