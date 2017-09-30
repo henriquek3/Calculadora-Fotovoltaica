@@ -40,10 +40,10 @@ module App{
             valorPrevistoSistema = valorOrcamento / potenciaGeradorSolar;
 
             return {
-                "Qtd-Mod" : quantidadeModulos,
-                "pot-Ger" : potenciaGeradorSolar.toPrecision(3),
-                "area-Inst" : areaInstalacao,
-                "ener-Anual" : energiaGeradaAnual.toPrecision(6),
+                "quantModulos": quantidadeModulos,
+                "potenciaKwp": potenciaGeradorSolar.toPrecision(3),
+                "areaInst": areaInstalacao,
+                "energiaGeradaAnual": energiaGeradaAnual.toPrecision(6),
                 "valor-Sis" : valorPrevistoSistema
             };
 

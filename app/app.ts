@@ -47,5 +47,13 @@ module App{
         let obj: any;
         obj = calculo.execute();
         console.log(obj);
+
+
+        (<HTMLSpanElement>document.getElementById('geracao-anual')).textContent = obj.energiaGeradaAnual;
+        (<HTMLSpanElement>document.getElementById('tamanho-sistema')).textContent = obj.potenciaKwp;
+        (<HTMLSpanElement>document.getElementById('qtd-modulos')).textContent = obj.quantModulos;
+        (<HTMLSpanElement>document.getElementById('area-instalacao')).textContent = obj.areaInst.toPrecision(3);
+
+
     }
 }

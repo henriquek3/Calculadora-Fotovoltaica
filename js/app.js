@@ -38,10 +38,10 @@ var App;
             energiaGeradaAnual = energiaGerada * 12;
             valorPrevistoSistema = valorOrcamento / potenciaGeradorSolar;
             return {
-                "Qtd-Mod": quantidadeModulos,
-                "pot-Ger": potenciaGeradorSolar.toPrecision(3),
-                "area-Inst": areaInstalacao,
-                "ener-Anual": energiaGeradaAnual.toPrecision(6),
+                "quantModulos": quantidadeModulos,
+                "potenciaKwp": potenciaGeradorSolar.toPrecision(3),
+                "areaInst": areaInstalacao,
+                "energiaGeradaAnual": energiaGeradaAnual.toPrecision(6),
                 "valor-Sis": valorPrevistoSistema
             };
         };
@@ -86,5 +86,9 @@ var App;
         var obj;
         obj = calculo.execute();
         console.log(obj);
+        document.getElementById('geracao-anual').textContent = obj.energiaGeradaAnual;
+        document.getElementById('tamanho-sistema').textContent = obj.potenciaKwp;
+        document.getElementById('qtd-modulos').textContent = obj.quantModulos;
+        document.getElementById('area-instalacao').textContent = obj.areaInst.toPrecision(3);
     };
 })(App || (App = {}));
