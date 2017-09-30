@@ -17,6 +17,7 @@ module App{
             public energiaAnualGerada: number,
             public valorOrcamento: number
         ){};
+
         execute(): any{
             let contaEnergia = this.contaEnergia;
             let energiaGerada = this.energiaGerada;
@@ -37,13 +38,15 @@ module App{
             areaInstalacao = quantidadeModulos * areaModulo;
             energiaGeradaAnual = energiaGerada * 12;
             valorPrevistoSistema = valorOrcamento / potenciaGeradorSolar;
+
             return {
-                "QtdMod" : quantidadeModulos,
-                "potGer" : potenciaGeradorSolar.toPrecision(3),
-                "areaInst" : areaInstalacao,
-                "enerAnual" : energiaGeradaAnual.toPrecision(6),
-                "valorSis" : valorPrevistoSistema
+                "Qtd-Mod" : quantidadeModulos,
+                "pot-Ger" : potenciaGeradorSolar.toPrecision(3),
+                "area-Inst" : areaInstalacao,
+                "ener-Anual" : energiaGeradaAnual.toPrecision(6),
+                "valor-Sis" : valorPrevistoSistema
             };
+
         };
     }
 }

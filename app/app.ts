@@ -13,32 +13,43 @@ module App{
     let taxaDisponibilidade: number;
     let energiaAnualGerada: number;
     let valorOrcamento: number;
-    contaEnergia = 733.29;
-    energiaGerada = 965;
-    valorTarifa = 0.76;
+
+
+    let $uf: any;
+    $uf = document.getElementById('estados');
+    //contaEnergia = 733.29;
+    //valorTarifa = 0.76;
     hsp = 4.27;
     potenciaModulo = 325;
     areaModulo = 1.92;
     rendimentoModulo = 0.1674;
-    taxaDisponibilidade = 50;  
-    valorOrcamento = 44889.31; 
+    taxaDisponibilidade = 50;
+    valorOrcamento = 44889.31;
 
-    let calculo = new CalculoFotoVoltaico(
-        contaEnergia,energiaGerada,
-        valorTarifa,hsp,
-        potenciaModulo,areaModulo,
-        rendimentoModulo,taxaDisponibilidade,
-        energiaAnualGerada,valorOrcamento
-    );
 
-    //estados.selectedOptions[0].dataset.tarifa
-    let $cidade: any;
-    $cidade = document.getElementById('cidades');
-    $cidade.onchange = function () {
-        console.log($cidade.value);
-    };
+    let $btn: any;
+    $btn = document.getElementsByClassName('primary button');
+    $btn[0].onclick = function () {
 
-    let obj: any;
-    obj = calculo.execute();
-    console.log(obj);
+
+        valorTarifa = $uf.selectedOptions[0].dataset.tarifa;
+        console.log(valorTarifa);
+
+        energiaGerada = document.getElementById('kwh').value;
+        contaEnergia = energiaGerada * valorTarifa;
+
+        console.log(contaEnergia);
+
+        let calculo = new CalculoFotoVoltaico(
+            contaEnergia,energiaGerada,
+            valorTarifa,hsp,
+            potenciaModulo,areaModulo,
+            rendimentoModulo,taxaDisponibilidade,
+            energiaAnualGerada,valorOrcamento
+        );
+
+        let obj: any;
+        obj = calculo.execute();
+        console.log(obj);
+    }
 }

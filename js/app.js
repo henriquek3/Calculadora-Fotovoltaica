@@ -39,11 +39,11 @@ var App;
             energiaGeradaAnual = energiaGerada * 12;
             valorPrevistoSistema = valorOrcamento / potenciaGeradorSolar;
             return {
-                "QtdMod": quantidadeModulos,
-                "potGer": potenciaGeradorSolar.toPrecision(3),
-                "areaInst": areaInstalacao,
-                "enerAnual": energiaGeradaAnual.toPrecision(6),
-                "valorSis": valorPrevistoSistema
+                "Qtd-Mod": quantidadeModulos,
+                "pot-Ger": potenciaGeradorSolar.toPrecision(3),
+                "area-Inst": areaInstalacao,
+                "ener-Anual": energiaGeradaAnual.toPrecision(6),
+                "valor-Sis": valorPrevistoSistema
             };
         };
         ;
@@ -67,22 +67,27 @@ var App;
     var taxaDisponibilidade;
     var energiaAnualGerada;
     var valorOrcamento;
-    contaEnergia = 733.29;
-    energiaGerada = 965;
-    valorTarifa = 0.76;
+    var $uf;
+    $uf = document.getElementById('estados');
+    //contaEnergia = 733.29;
+    //valorTarifa = 0.76;
     hsp = 4.27;
     potenciaModulo = 325;
     areaModulo = 1.92;
     rendimentoModulo = 0.1674;
     taxaDisponibilidade = 50;
     valorOrcamento = 44889.31;
-    var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento);
-    var $cidade;
-    $cidade = document.getElementById('cidades');
-    $cidade.onchange = function () {
-        console.log($cidade.value);
+    var $btn;
+    $btn = document.getElementsByClassName('primary button');
+    $btn[0].onclick = function () {
+        valorTarifa = $uf.selectedOptions[0].dataset.tarifa;
+        console.log(valorTarifa);
+        energiaGerada = document.getElementById('kwh').value;
+        contaEnergia = energiaGerada * valorTarifa;
+        console.log(contaEnergia);
+        var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento);
+        var obj;
+        obj = calculo.execute();
+        console.log(obj);
     };
-    var obj;
-    obj = calculo.execute();
-    console.log(obj);
 })(App || (App = {}));
