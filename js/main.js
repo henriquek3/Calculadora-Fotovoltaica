@@ -52,4 +52,8 @@ $(document).ready(function () {
             console.log(responseText);
         });
     });
+
+/*    $('#cidades').change(function () {
+        console.log('city altered');
+    });*/
 });

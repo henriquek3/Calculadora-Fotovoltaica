@@ -30,12 +30,15 @@ module App{
         rendimentoModulo,taxaDisponibilidade,
         energiaAnualGerada,valorOrcamento
     );
+
+    //estados.selectedOptions[0].dataset.tarifa
+    let $cidade: any;
+    $cidade = document.getElementById('cidades');
+    $cidade.onchange = function () {
+        console.log($cidade.value);
+    };
+
     let obj: any;
     obj = calculo.execute();
     console.log(obj);
-    console.log(obj.QtdMod);
-    console.log(obj.areaInst);
-    console.log(obj.enerAnual);
-    console.log(obj.potGer);
-    console.log(obj.valorSis);
 }

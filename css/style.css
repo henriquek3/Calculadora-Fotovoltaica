@@ -1,5 +1,5 @@
 header {
-    margin-top: 80px;
+    margin-top: 20px;
 }
 
 main {
@@ -55,20 +55,10 @@ main {
 #kwh {
   max-width: 252px;
 }
+
 #tarifa {
-  max-width: 198px;
+    max-width: 198px;
 }
 #find-media {
   font-size: 14px;
-}
-
-.outer {
-    position: relative;
-    width: 100%;
-}
-
-.inner {
-    left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
 }

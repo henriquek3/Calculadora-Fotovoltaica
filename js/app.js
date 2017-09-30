@@ -4,7 +4,7 @@
 ///<reference path="ICalculoFotoVoltaico.ts"/>
 var App;
 (function (App) {
-    var CalculoFotoVoltaico = (function () {
+    var CalculoFotoVoltaico = /** @class */ (function () {
         function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
@@ -77,12 +77,12 @@ var App;
     taxaDisponibilidade = 50;
     valorOrcamento = 44889.31;
     var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento);
+    var $cidade;
+    $cidade = document.getElementById('cidades');
+    $cidade.onchange = function () {
+        console.log($cidade.value);
+    };
     var obj;
     obj = calculo.execute();
     console.log(obj);
-    /*console.log(obj.QtdMod);
-    console.log(obj.areaInst);
-    console.log(obj.enerAnual);
-    console.log(obj.potGer);
-    console.log(obj.valorSis);*/
 })(App || (App = {}));
