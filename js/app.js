@@ -68,16 +68,17 @@ var App;
     var energiaAnualGerada;
     var valorOrcamento;
     var $uf;
-    $uf = document.getElementById('estados');
-    //contaEnergia = 733.29;
-    //valorTarifa = 0.76;
+    var $btn;
+    //  @todo parametros do sistema
+    //=============================================
     hsp = 4.27;
     potenciaModulo = 325;
     areaModulo = 1.92;
     rendimentoModulo = 0.1674;
     taxaDisponibilidade = 50;
     valorOrcamento = 44889.31;
-    var $btn;
+    //==============================================
+    $uf = document.getElementById('estados');
     $btn = document.getElementsByClassName('primary button');
     $btn[0].onclick = function () {
         valorTarifa = $uf.selectedOptions[0].dataset.tarifa;

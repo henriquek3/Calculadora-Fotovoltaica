@@ -13,12 +13,12 @@ module App{
     let taxaDisponibilidade: number;
     let energiaAnualGerada: number;
     let valorOrcamento: number;
-
-
     let $uf: any;
-    $uf = document.getElementById('estados');
-    //contaEnergia = 733.29;
-    //valorTarifa = 0.76;
+    let $btn: any;
+
+//  @todo parametros do sistema
+//=============================================
+
     hsp = 4.27;
     potenciaModulo = 325;
     areaModulo = 1.92;
@@ -26,11 +26,12 @@ module App{
     taxaDisponibilidade = 50;
     valorOrcamento = 44889.31;
 
+//==============================================
 
-    let $btn: any;
+    $uf = document.getElementById('estados');
     $btn = document.getElementsByClassName('primary button');
-    $btn[0].onclick = function () {
 
+    $btn[0].onclick = function () {
 
         valorTarifa = $uf.selectedOptions[0].dataset.tarifa;
         console.log(valorTarifa);
