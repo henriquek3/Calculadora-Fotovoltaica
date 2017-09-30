@@ -15,9 +15,19 @@
     <link rel="stylesheet" href="css/style.css">
 
     <title>Calculadora</title>
+    <style>
+        .ui.center.aligned.header {
+            margin-top: 10px;
+        }
+
+        .btn-left-right button {
+            width: 225px;
+        }
+
+    </style>
 </head>
 <body class="ui container">
-<header>
+<header id="header-calculadora">
     <div class="ui center aligned header">
         <h2 class="ui icon header">
             <i class="blue calculator icon"></i>
@@ -29,7 +39,8 @@
     </div>
 </header>
 <main>
-    <div class="wrapper">
+    <!-- Corpo da Calculadora -->
+    <div class="wrapper" id="corpo-calculadora">
         <div class="ui basic segment">
             <div style="text-align: center;">
                 <h3 class="">Informe a média anual de consumo em Quilowatt-Hora <!--, caso não saiba <a href="#">clique aqui!</a>--> <i class="circular green lightning icon"></i></h3>
@@ -96,13 +107,80 @@
                 </div>
             </div>
             <p></p>
-            <div class="" align="center">
-                <div class="">
+            <div align="center">
+                <div>
                     <button class="ui big primary button"><span class="txt-button">Calcular</span></button>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+
+    <!-- Corpo do Resultado -->
+    <header style="display: none" id="header-resultado">
+        <div class="ui center aligned header">
+            <h2 class="ui icon header">
+                <i class="blue calculator icon"></i>
+                <span class="content">
+                Calculadora Solar
+                <span class="sub header">Confira os resultados apróximados para o seu cálculo de sistema fotovoltaico</span>
+            </span>
+            </h2>
+        </div>
+    </header>
+    <section class="ui container" id="corpo-resultado" style="display: none">
+        <div class="ui horizontal raised segments">
+            <div class="ui orange segment">
+                <h3 class="ui center aligned header">Valor de Investimento <i class="dollar icon"></i></h3>
+                <div class="ui divider"></div>
+
+                <h4>Estimativa</h4>
+                <p>De R$ <span id="vlr-ini">13.220,61</span> a R$ <span id="vlr-fim">19.147,10</span></p>
+
+                <h4>Economia mensal</h4>
+                <p>R$ <span id="economial-mensal">141,50</span></p>
+
+                <h4>Economia total acumulada em 30 anos</h4>
+                <p>R$ <span id="economia-trinta-anos">154.920,31</span></p>
+
+            </div>
+            <div class="ui green segment">
+                <h3 class="ui center aligned header">Sistema Indicado <i class="lightning icon"></i></h3>
+                <div class="ui divider"></div>
+
+                <h4>Tamanho do Sistema</h4>
+                <p><span id="tamanho-sistema">1,52</span> kWp</p>
+
+                <h4>Módulos e Área necessária</h4>
+                <p><span id="qtd-modulos">6</span> módulos e <span id="area-instalacao">10,64</span> m2</p>
+
+                <h4>Produção anual estimada</h4>
+                <p><span id="geracao-anual">2.392</span> KWh</p>
+
+            </div>
+            <div class="ui blue segment">
+                <h3 class="ui center aligned header">Estimativa Ambiental <i class="leaf icon"></i></h3>
+                <div class="ui divider"></div>
+
+                <h4>Redução de CO2 na atmosfera</h4>
+                <p><span id="reducao-co">34.270</span> kg CO2</p>
+
+                <h4>Equivalente a árvores plantadas</h4>
+                <p><span id="arvores-plantadas">245</span> árvores</p>
+
+                <h4>Equivalente a KM rodados de carro</h4>
+                <p><span id="carro-eletrico">312.502</span> km</p>
+
+            </div>
+        </div>
+        <div>
+            <div style="width:500px;margin:auto;">
+                <button class="fluid ui animated fade massive yellow button">
+                    <div class="visible content">SOLICITAR ORÇAMENTO</div>
+                    <div class="hidden content">SOLICITAR ORÇAMENTO</div>
+                </button>
+            </div>
+        </div>
+    </section>
 </main>
 
 <!--Modal-->

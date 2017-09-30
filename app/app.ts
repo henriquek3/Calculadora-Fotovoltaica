@@ -32,14 +32,9 @@ module App{
     $btn = document.getElementsByClassName('primary button');
 
     $btn[0].onclick = function () {
-
         valorTarifa = $uf.selectedOptions[0].dataset.tarifa;
-        console.log(valorTarifa);
-
-        energiaGerada = document.getElementById('kwh').value;
+        energiaGerada = +(<HTMLInputElement>document.getElementById('kwh')).value;
         contaEnergia = energiaGerada * valorTarifa;
-
-        console.log(contaEnergia);
 
         let calculo = new CalculoFotoVoltaico(
             contaEnergia,energiaGerada,

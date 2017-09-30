@@ -4,7 +4,7 @@
 ///<reference path="ICalculoFotoVoltaico.ts"/>
 var App;
 (function (App) {
-    var CalculoFotoVoltaico = /** @class */ (function () {
+    var CalculoFotoVoltaico = (function () {
         function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
@@ -17,7 +17,6 @@ var App;
             this.energiaAnualGerada = energiaAnualGerada;
             this.valorOrcamento = valorOrcamento;
         }
-        ;
         CalculoFotoVoltaico.prototype.execute = function () {
             var contaEnergia = this.contaEnergia;
             var energiaGerada = this.energiaGerada;
@@ -46,7 +45,6 @@ var App;
                 "valor-Sis": valorPrevistoSistema
             };
         };
-        ;
         return CalculoFotoVoltaico;
     }());
     App.CalculoFotoVoltaico = CalculoFotoVoltaico;
@@ -82,10 +80,8 @@ var App;
     $btn = document.getElementsByClassName('primary button');
     $btn[0].onclick = function () {
         valorTarifa = $uf.selectedOptions[0].dataset.tarifa;
-        console.log(valorTarifa);
-        energiaGerada = document.getElementById('kwh').value;
+        energiaGerada = +document.getElementById('kwh').value;
         contaEnergia = energiaGerada * valorTarifa;
-        console.log(contaEnergia);
         var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento);
         var obj;
         obj = calculo.execute();

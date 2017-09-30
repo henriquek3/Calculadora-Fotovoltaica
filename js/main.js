@@ -53,7 +53,12 @@ $(document).ready(function () {
         });
     });
 
-/*    $('#cidades').change(function () {
-        console.log('city altered');
-    });*/
+    $('.ui.big.primary.button').click(function () {
+        $('#header-calculadora').css('display', 'none');
+        $('#corpo-calculadora').css('display', 'none');
+
+        $('#header-resultado').css('display', 'block');
+        $('#corpo-resultado').css('display', 'block');
+    })
+    
 });
