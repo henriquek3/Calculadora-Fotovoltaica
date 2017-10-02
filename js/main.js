@@ -89,4 +89,5 @@ $(document).ready(function () {
             console.log('removido class disabled do button ');
         }
     });
+
 });
