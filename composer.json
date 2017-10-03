@@ -2,10 +2,5 @@
   "require" : {
     "semantic/ui" : "^2.2",
     "components/jquery": "3.2.1"
-  },
-    "autoload": {
-        "psr-4": {
-            "SON\\": "src"
-        }
-    }
+  }
 }

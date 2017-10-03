@@ -9,6 +9,8 @@ out
 gen
 .gitignore
 .idea/
+.phpintel/
 composer.lock
 vendor/
 php/
+layouts-deletados/
