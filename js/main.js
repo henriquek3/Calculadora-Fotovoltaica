@@ -58,9 +58,12 @@ $(document).ready(function () {
     $('.ui.big.primary.button').click(function () {
         $('#header-calculadora').css('display', 'none');
         $('#corpo-calculadora').css('display', 'none');
-
         $('#header-resultado').css('display', 'block');
         $('#corpo-resultado').css('display', 'block');
+        resultado(document.getElementById('kwh').value,0);
+        let k = document.getElementById('kwh').value;
+        let kmtotal = 12 * (k / 5.565);
+        document.getElementById("carro-eletrico").innerHTML = Math.round(kmtotal);
     });
 
     /*
@@ -77,16 +80,16 @@ $(document).ready(function () {
                 console.log($kwh);break;
             default:
                 $('.ui.big.primary.button').removeClass('disabled');
-                console.log('class removed');
+                //console.log('class removed');
         }
     });
     $('#kwh').change(function () {
         let $cid = document.getElementById('cidades').value;
         if ($cid !== 'nao-informado' && this.value > 1) {
-            console.log(this.value);
-            console.log($cid);
+            //console.log(this.value);
+            //console.log($cid);
             $('.ui.big.primary.button').removeClass('disabled');
-            console.log('removido class disabled do button ');
+            //console.log('removido class disabled do button ');
         }
     });
 
