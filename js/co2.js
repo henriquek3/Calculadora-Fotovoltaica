@@ -36,7 +36,7 @@ function total(arg) {
     tco2e = 12 * (soma * 12);
     document.getElementById("reducao-co").innerHTML = Math.round(tco2e);
     //console.log(Math.round(tco2e) + ' ton CO2');
-    tco = 12 * (soma / 3.67);
+    tco = 12 * (10 / (soma / 3.67));
     //document.getElementById("tCO").innerHTML = Math.round(tco) + " tCO";
     //console.log(Math.round(tco) + ' tCO');
     arv = 12 * (soma * 3.6);

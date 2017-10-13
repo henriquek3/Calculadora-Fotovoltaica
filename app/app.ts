@@ -13,6 +13,7 @@ module App{
     let taxaDisponibilidade: number;
     let energiaAnualGerada: number;
     let valorOrcamento: number;
+    let precoKwp: number;
     let $uf: any;
     let $btn: any;
 
@@ -25,6 +26,7 @@ module App{
     rendimentoModulo = 0.1674;
     taxaDisponibilidade = 50;
     valorOrcamento = 44889.31;
+    precoKwp = 6695.58;
 
 //==============================================
 
@@ -32,7 +34,7 @@ module App{
     $btn = document.getElementsByClassName('primary button');
 
     $btn[0].onclick = function () {
-        valorTarifa = $uf.selectedOptions[0].dataset.tarifa;
+        valorTarifa = +(<HTMLBodyElement>$uf.selectedOptions[0]).dataset.tarifa;
         energiaGerada = +(<HTMLInputElement>document.getElementById('kwh')).value;
         contaEnergia = energiaGerada * valorTarifa;
 
@@ -41,7 +43,7 @@ module App{
             valorTarifa,hsp,
             potenciaModulo,areaModulo,
             rendimentoModulo,taxaDisponibilidade,
-            energiaAnualGerada,valorOrcamento
+            energiaAnualGerada,valorOrcamento,precoKwp
         );
 
         let obj: any;
@@ -52,6 +54,8 @@ module App{
         (<HTMLSpanElement>document.getElementById('geracao-anual')).textContent = obj.energiaGeradaAnual;
         (<HTMLSpanElement>document.getElementById('tamanho-sistema')).textContent = obj.potenciaKwp;
         (<HTMLSpanElement>document.getElementById('qtd-modulos')).textContent = obj.quantModulos;
+        (<HTMLSpanElement>document.getElementById('precoMinOrcamento')).textContent = obj.precoMinOrcamento;
+        (<HTMLSpanElement>document.getElementById('precoMaxOrcamento')).textContent = obj.precoMaxOrcamento;
         (<HTMLSpanElement>document.getElementById('area-instalacao')).textContent = obj.areaInst.toPrecision(3);
 
 

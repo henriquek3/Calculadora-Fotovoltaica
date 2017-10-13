@@ -12,6 +12,7 @@ module App{
         rendimentoModulo: number;
         taxaDisponibilidade: number;
         energiaAnualGerada: number;
+        precoKwp: number;
 
         execute(): string;
     }
