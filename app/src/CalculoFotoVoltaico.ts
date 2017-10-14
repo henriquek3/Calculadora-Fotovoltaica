@@ -19,6 +19,40 @@ module App{
             public precoKwp: number
         ){};
 
+        calculosTirVpl(cvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento): any {
+            /**
+             * @var premissas
+             */
+            let reajusteAnualTarifa = 0.08;
+            let taxaInflacaoAnual = 1.000007;
+            let taxaDescontoEnergiaGerada = 0.10;
+            let taxaAnualOeM = 0.0025;
+            let perdaRendimentoAnual = 0.50;
+            let anoTrocaInversor = 15;
+            let custoInversor = 3000;
+
+            /**
+             * @var temps
+             */
+            let receitaAnual = 0;
+            let custoOeM = 0;
+            let receitaLiquidaAnual = 0;
+            let resultadoFinal = 0;
+
+            //for (let ano=0; ano <= 30; ano++) {
+            custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
+            receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
+            resultadoFinal = cprecoMinOrcamento - receitaLiquidaAnual;
+            //}
+            return {
+                "receitaLiquidaAnual": receitaLiquidaAnual,
+                "resultadoFinal": resultadoFinal.toPrecision(8)
+            }
+        };
+
+        //=-$B$5*($B$9*((1+$B$3)^0))+SE($B$7=D2;-$B$8;0)
+        //=-0,0025*(44889,31*((1+0,7)^0))
+        //=-0,0025*(44889,31*1,000007)
         execute(): any{
             let contaEnergia = this.contaEnergia;
             let energiaGerada = this.energiaGerada;
@@ -105,20 +139,8 @@ module App{
             precoMaxOrcamento = precoMaxOrcamentoTmp;
             valorEconomiaMensal = valorTarifa * ( energiaGeradaAnual / 12);
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
-            let inflacao = 0;
-            for (let x=0;x <= 30;x++) {
-                console.log(x);
-                inflacao += 8 * ( valorEconomizadoTrintaAnos / 100 );
-                console.log(valorEconomizadoTrintaAnos);
-                console.log(inflacao);
-            }
 
-            /**
-             *
-             * 7 por cento de inflação
-             * 8 por cento reajuste anual
-             *
-             */
+            console.log(this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento));
 
 
 

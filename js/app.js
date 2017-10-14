@@ -4,7 +4,7 @@
 ///<reference path="ICalculoFotoVoltaico.ts"/>
 var App;
 (function (App) {
-    var CalculoFotoVoltaico = /** @class */ (function () {
+    var CalculoFotoVoltaico = (function () {
         function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
@@ -18,7 +18,38 @@ var App;
             this.valorOrcamento = valorOrcamento;
             this.precoKwp = precoKwp;
         }
-        ;
+
+        CalculoFotoVoltaico.prototype.calculosTirVpl = function (cvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento) {
+            /**
+             * @var premissas
+             */
+            var reajusteAnualTarifa = 0.08;
+            var taxaInflacaoAnual = 1.000007;
+            var taxaDescontoEnergiaGerada = 0.10;
+            var taxaAnualOeM = 0.0025;
+            var perdaRendimentoAnual = 0.50;
+            var anoTrocaInversor = 15;
+            var custoInversor = 3000;
+            /**
+             * @var temps
+             */
+            var receitaAnual = 0;
+            var custoOeM = 0;
+            var receitaLiquidaAnual = 0;
+            var resultadoFinal = 0;
+            //for (let ano=0; ano <= 30; ano++) {
+            custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento);
+            receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
+            resultadoFinal = cprecoMinOrcamento - receitaLiquidaAnual;
+            //}
+            return {
+                "receitaLiquidaAnual": receitaLiquidaAnual,
+                "resultadoFinal": resultadoFinal.toPrecision(8)
+            };
+        };
+        //=-$B$5*($B$9*((1+$B$3)^0))+SE($B$7=D2;-$B$8;0)
+        //=-0,0025*(44889,31*((1+0,7)^0))
+        //=-0,0025*(44889,31*1,000007)
         CalculoFotoVoltaico.prototype.execute = function () {
             var contaEnergia = this.contaEnergia;
             var energiaGerada = this.energiaGerada;
@@ -125,19 +156,7 @@ var App;
             precoMaxOrcamento = precoMaxOrcamentoTmp;
             valorEconomiaMensal = valorTarifa * (energiaGeradaAnual / 12);
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
-            var inflacao = 0;
-            for (var x = 0; x <= 30; x++) {
-                console.log(x);
-                inflacao += 8 * (valorEconomizadoTrintaAnos / 100);
-                console.log(valorEconomizadoTrintaAnos);
-                console.log(inflacao);
-            }
-            /**
-             *
-             * 7 por cento de inflação
-             * 8 por cento reajuste anual
-             *
-             */
+            console.log(this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento));
             return {
                 "quantModulos": quantidadeModulos,
                 "potenciaKwp": potenciaGeradorSolar.toPrecision(3),
@@ -155,7 +174,6 @@ var App;
                 "precoMaxOrcamento": precoMaxOrcamento.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
             };
         };
-        ;
         return CalculoFotoVoltaico;
     }());
     App.CalculoFotoVoltaico = CalculoFotoVoltaico;
