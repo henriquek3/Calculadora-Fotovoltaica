@@ -14,3 +14,6 @@ composer.lock
 vendor/
 php/
 layouts-deletados/
+/luxenergiasolar.com.br/
+!/luxenergiasolar.com.br/web/calculadora-fotovoltaica/
+!/luxenergiasolar.com.br/web/calculadora-fotovoltaica/php/
