@@ -4,7 +4,7 @@
 ///<reference path="ICalculoFotoVoltaico.ts"/>
 var App;
 (function (App) {
-    var CalculoFotoVoltaico = /** @class */ (function () {
+    var CalculoFotoVoltaico = (function () {
         function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
@@ -18,7 +18,6 @@ var App;
             this.valorOrcamento = valorOrcamento;
             this.precoKwp = precoKwp;
         }
-        ;
         CalculoFotoVoltaico.prototype.execute = function () {
             var contaEnergia = this.contaEnergia;
             var energiaGerada = this.energiaGerada;
@@ -37,8 +36,11 @@ var App;
             var valorPrevistoSistema;
             var precoMinOrcamento;
             var precoMaxOrcamento;
+            var precoMaxOrcamentoTmp;
             var kwp;
             var valor;
+            var valorEconomiaMensal;
+            var valorEconomizadoTrintaAnos;
             quantidadeModulos = Math.ceil((energiaGerada * 12) / (hsp * areaModulo * rendimentoModulo * 365));
             potenciaGeradorSolar = (quantidadeModulos * potenciaModulo) / 1000;
             areaInstalacao = quantidadeModulos * areaModulo;
@@ -118,17 +120,27 @@ var App;
                 valor = 102813.85;
             }
             precoMinOrcamento = valor;
-            precoMaxOrcamento = kwp * precoKwp;
+            precoMaxOrcamentoTmp = kwp * precoKwp;
+            precoMaxOrcamento = precoMaxOrcamentoTmp;
+            valorEconomiaMensal = valorTarifa * (energiaGeradaAnual / 12);
+            valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
             return {
                 "quantModulos": quantidadeModulos,
                 "potenciaKwp": potenciaGeradorSolar.toPrecision(3),
                 "areaInst": areaInstalacao,
                 "energiaGeradaAnual": energiaGeradaAnual.toPrecision(6),
-                "precoMinOrcamento": precoMinOrcamento,
-                "precoMaxOrcamento": precoMaxOrcamento.toPrecision(7)
+                "valorEconomizadoTrintaAnos": valorEconomizadoTrintaAnos.toLocaleString('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }),
+                "valorEconomiaMensal": valorEconomiaMensal.toLocaleString('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }),
+                "precoMinOrcamento": precoMinOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                "precoMaxOrcamento": precoMaxOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
             };
         };
-        ;
         return CalculoFotoVoltaico;
     }());
     App.CalculoFotoVoltaico = CalculoFotoVoltaico;
@@ -175,6 +187,8 @@ var App;
         document.getElementById('geracao-anual').textContent = obj.energiaGeradaAnual;
         document.getElementById('tamanho-sistema').textContent = obj.potenciaKwp;
         document.getElementById('qtd-modulos').textContent = obj.quantModulos;
+        document.getElementById('economial-mensal').textContent = obj.valorEconomiaMensal;
+        document.getElementById('economia-trinta-anos').textContent = obj.valorEconomizadoTrintaAnos;
         document.getElementById('precoMinOrcamento').textContent = obj.precoMinOrcamento;
         document.getElementById('precoMaxOrcamento').textContent = obj.precoMaxOrcamento;
         document.getElementById('area-instalacao').textContent = obj.areaInst.toPrecision(3);

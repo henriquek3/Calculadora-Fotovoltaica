@@ -37,8 +37,11 @@ module App{
             let valorPrevistoSistema: number;
             let precoMinOrcamento: number;
             let precoMaxOrcamento: number;
+            let precoMaxOrcamentoTmp: number;
             let kwp: number;
             let valor: number;
+            let valorEconomiaMensal: number;
+            let valorEconomizadoTrintaAnos: number;
 
             quantidadeModulos = Math.ceil((energiaGerada * 12) / (hsp * areaModulo * rendimentoModulo * 365));
             potenciaGeradorSolar = (quantidadeModulos * potenciaModulo) / 1000;
@@ -98,15 +101,26 @@ module App{
             }
 
             precoMinOrcamento = valor;
-            precoMaxOrcamento = kwp * precoKwp;
+            precoMaxOrcamentoTmp = kwp * precoKwp;
+            precoMaxOrcamento = precoMaxOrcamentoTmp;
+            valorEconomiaMensal = valorTarifa * ( energiaGeradaAnual / 12);
+            valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
 
             return {
                 "quantModulos": quantidadeModulos,
                 "potenciaKwp": potenciaGeradorSolar.toPrecision(3),
                 "areaInst": areaInstalacao,
                 "energiaGeradaAnual": energiaGeradaAnual.toPrecision(6),
-                "precoMinOrcamento" : precoMinOrcamento,
-                "precoMaxOrcamento" : precoMaxOrcamento.toPrecision(7)
+                "valorEconomizadoTrintaAnos": valorEconomizadoTrintaAnos.toLocaleString('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }),
+                "valorEconomiaMensal": valorEconomiaMensal.toLocaleString('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }),
+                "precoMinOrcamento": precoMinOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                "precoMaxOrcamento": precoMaxOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
             };
 
         };

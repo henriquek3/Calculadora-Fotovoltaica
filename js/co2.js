@@ -33,15 +33,9 @@ function total(arg) {
             soma = soma + valoratual*12;
         }
     }
-    tco2e = 12 * (soma * 12);
-    document.getElementById("reducao-co").innerHTML = Math.round(tco2e);
-    //console.log(Math.round(tco2e) + ' ton CO2');
-    tco = 12 * (10 / (soma / 3.67));
-    //document.getElementById("tCO").innerHTML = Math.round(tco) + " tCO";
-    //console.log(Math.round(tco) + ' tCO');
+    tco2e = 12 * (10 / (soma * 12));
+    //document.getElementById("reducao-co").innerHTML = Math.round(tco2e);
+    document.getElementById("reducao-co").innerHTML = tco2e.toPrecision(3);
     arv = 12 * (soma * 3.6);
     document.getElementById("arvores-plantadas").innerHTML = Math.round(arv);
-    //console.log(Math.round(arv) + ' Arvores');
-    //valor = arv * 10;
-    //document.getElementById("neutr").innerHTML = "US$ " + Math.round(valor);
 }
