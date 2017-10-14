@@ -1,0 +1,116 @@
+@charset "utf-8";
+/* CSS Document
+Author:  Diego Rohden
+*/
+
+*{margin:0; padding:0;}
+*:hover{-webkit-transition: all 250ms ease 15ms; -moz-transition: all 250ms ease 15ms; -o-transition: all 250ms ease 15ms; transition: all 250ms ease 15ms;}
+*:focus{outline:none;}
+ul{margin:0px;}
+li{ list-style: none;}
+h1{font-size: 26px;font-family: "NeoRegular", Helvetica, Roboto, Arial, sans-serif ; }
+h2{font-size: 22px;font-family: "NeoRegular", Helvetica, Roboto, Arial, sans-serif ;}
+h3{font-size: 18px;font-family: "NeoRegular", Helvetica, Roboto, Arial, sans-serif ;}
+input{padding:5px;}
+textarea{padding:5px;}
+a img{border:none;}
+a{border:none; margin:0; text-decoration: none; color:#2b2b2b;}
+a:hover{color: #287d62;}
+img {border: 0px;}
+
+.wpcf7-mail-sent-ok{color: #fff ;}
+
+.box1_page {background: #ffcc04; font-size: 34px; width: 100%;}
+
+body{font-size: 16px; overflow-x: hidden;  font-family: "NeoRegular", Helvetica, Roboto, Arial, sans-serif ; color:  #070e31;}
+
+#amarelo_linear { background:  linear-gradient( -0.1turn, #ffe200, #ffe200, #ffcc04, #ffcc04 ); }
+
+#azul_linear { background:  linear-gradient( -0.1turn, #0a1032, #0a1032, #17195a, #17195a ); }
+
+#bg_img {background: url(img/bg_disponivel.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; color: #fff;}
+
+#bg_vantagens{background: #4c4c4c; color:  #fff;}
+
+.button.large {color: #fff; font-weight: bold;}
+
+.button.success{background: #e4ff00 ;}
+
+#titulo_single {background: #373737; width: 100%;}
+#titulo_single h1{color: #fff;}
+
+hr{ border: 2px solid #ffcc04;}
+
+
+.border {border: 1px solid #fff;}
+
+.top-bar, .top-bar ul{background: transparent;}
+
+#bg_banner_page {background: #0a1033; color: #fff; padding: 10px; margin-top: 10px; }
+
+.titulo_page h1{font-size: 36px;}
+
+.menu {margin-top: 20px;}
+.menu.simple li a{padding: 0px;margin: 5px; font-size: 14pt; padding: 5px 5px;}
+
+.wpcf7-submit {background: #ffcc04; color:  black; padding: 10px; width: 100%; cursor: pointer;}
+
+.peca_orcamento h1{font-size: 36px; font-weight: bold;}
+
+.menu li a:hover{text-decoration: underline #ffcc04;}
+
+.form_index label{color: #fff;}
+
+.descricao_empresa h2{color: #fff; padding-top:  20px; font-size: 28px; font-weight: normal;}
+
+#bg_azul {background: #0a1032; color: #fff;}
+
+div.wpcf7-validation-errors {color: #fff;}
+
+#bg_amarelo {background: #ffcc04; }
+.bg_amarelo {background:#ffcb04;
+    width:90%;
+    margin: auto;
+    padding:10px;
+    text-align:center;
+
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;}
+
+.abas{font-size: 20pt ; }
+
+.tabs-title > a{font-size: 16pt; color: #231f20;}
+.tabs-title > a:hover{background: #f4f4f4;color: #231f20;}
+
+.button{background: #2fbcb4; color: #231f20;}
+.button:hover{background: #20a8a0; color: #231f20;}
+
+.secondary {font-weight: bold; text-transform: uppercase; font-size: 12px;}
+
+footer{background: #ff9600; color: #fff;}
+
+address{font-size: 12px;}
+
+#banner {width: 100%; margin: 0px auto; text-align: center;}
+#azul_claro{background: #d4efff;}
+
+li .rss_item{width: 220px; float:  left;}
+
+.logomarca {padding: 10px; }
+
+.box_solucoes h2{ font-size: 24px; font-weight: bold; text-align: right; border-right: 5px solid #ffcc04; padding: 20px 10px;}
+
+.box_solucoes{padding-top: 20px;}
+
+#bg_cinza{background: #e6e7e8; width: 100%; }
+.space_top_vinte {padding-top: 20px;}
+.space_bottom_vinte{padding-bottom: 20px;}
+.space_top_dez {padding-top: 10px;}
+.space_top_quarenta {padding-top: 40px;}
+.space_bottom_dez {padding-bottom: 10px;}
+.space_bottom_quarenta {padding-bottom: 40px;}

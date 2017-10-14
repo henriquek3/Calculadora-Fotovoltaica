@@ -14,19 +14,3 @@ $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo json_encode($result);
-
-/*
-//print_r($result);
-//echo '<hr>';
-
-$json = json_encode( $result );
-
-echo "<script> var teste = $json; console.log(teste);
-for (var key of teste) {
-	console.log(key.nome);
-}
-</script>";
-foreach ($result as $item) {
-    echo '<option value="' . $item['uf_nome'] . '">' . $item['nome'] . '</option>';
-}
-*/

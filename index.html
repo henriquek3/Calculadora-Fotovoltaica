@@ -7,12 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Libs de terceiros -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.13/semantic.min.css">
-    <!--<link rel="stylesheet" href="vendor/semantic/ui/dist/semantic.css">-->
+    <link rel="stylesheet" href="vendor/semantic/ui/dist/semantic.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--<script src="vendor/components/jquery/jquery.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.13/semantic.min.js"></script>
-    <!--<script src="vendor/semantic/ui/dist/semantic.js"></script>-->
+    <script src="vendor/semantic/ui/dist/semantic.js"></script>
 
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="css/style.css">
@@ -59,8 +57,8 @@
                                     <label for="kwh">Média kWh</label>
                                 </div>
                                 <div class="eight wide field">
-                                    <input type="number" id="kwh" max="5">
-                                    <span id="find-media"><a href="#">Encontrar média?</a></span>
+                                    <input type="number" id="kwh" pattern="[0-9]" required>
+                                    <span id="find-media"><a id="modalsemantic" href="#">Encontrar média?</a></span>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +110,7 @@
             <p></p>
             <div align="center">
                 <div>
-                    <button class="ui big disabled primary button"><span class="txt-button">Calcular</span></button>
+                    <button type="submit" class="ui big disabled primary button"><span class="txt-button">Calcular</span></button>
                 </div>
             </div>
         </div>
@@ -137,13 +135,13 @@
                 <div class="ui divider"></div>
 
                 <h4>Estimativa</h4>
-                <p>De <span id="precoMinOrcamento">13.220,61</span> a <span id="precoMaxOrcamento">19.147,10</span></p>
+                <p>De <span id="precoMinOrcamento"></span> a <span id="precoMaxOrcamento"></span></p>
 
                 <h4>Economia mensal</h4>
-                <p><span id="economial-mensal">141,50</span></p>
+                <p><span id="economial-mensal"></span></p>
 
                 <h4>Economia total acumulada em 30 anos</h4>
-                <p><span id="economia-trinta-anos">154.920,31</span></p>
+                <p><span id="economia-trinta-anos"></span></p>
 
             </div>
             <div class="ui red segment">
@@ -151,13 +149,13 @@
                 <div class="ui divider"></div>
 
                 <h4>Tamanho do Sistema</h4>
-                <p><span id="tamanho-sistema">1,52</span> kWp</p>
+                <p><span id="tamanho-sistema"></span> kWp</p>
 
                 <h4>Módulos e Área necessária</h4>
-                <p><span id="qtd-modulos">6</span> módulos e <span id="area-instalacao">10,64</span> m2</p>
+                <p><span id="qtd-modulos"></span> módulos e <span id="area-instalacao"></span> m2</p>
 
                 <h4>Produção anual estimada</h4>
-                <p><span id="geracao-anual">2.392</span> KWh</p>
+                <p><span id="geracao-anual"></span> KWh</p>
 
             </div>
             <div class="ui green segment">
@@ -165,22 +163,14 @@
                 <div class="ui divider"></div>
 
                 <h4>Redução de CO2 na atmosfera</h4>
-                <p><span id="reducao-co">34.270</span> toneladas de CO2</p>
+                <p><span id="reducao-co"></span> toneladas de CO2</p>
 
                 <h4>Equivalente a árvores plantadas</h4>
-                <p><span id="arvores-plantadas">245</span> árvores plantadas</p>
+                <p><span id="arvores-plantadas"></span> árvores plantadas</p>
 
                 <h4>Equivalente a KM rodados de carro</h4>
-                <p><span id="carro-eletrico">312.502</span> km </p>
+                <p><span id="carro-eletrico"></span> km </p>
 
-            </div>
-        </div>
-        <div>
-            <div style="width:500px;margin:auto;">
-                <button class="fluid ui animated fade massive yellow button">
-                    <span class="visible content">SOLICITAR ORÇAMENTO</span>
-                    <span class="hidden content">SOLICITAR ORÇAMENTO</span>
-                </button>
             </div>
         </div>
     </section>
@@ -215,7 +205,7 @@
 <script src="js/main.js"></script>
 <script src="js/app.js"></script>
 <script>
-    $('.ui.modal').modal('attach events','a','show');
+    $('.ui.modal').modal('attach events','#modalsemantic','show');
     $('select').dropdown();
 </script>
 </body>

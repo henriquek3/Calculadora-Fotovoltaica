@@ -105,6 +105,22 @@ module App{
             precoMaxOrcamento = precoMaxOrcamentoTmp;
             valorEconomiaMensal = valorTarifa * ( energiaGeradaAnual / 12);
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
+            let inflacao = 0;
+            for (let x=0;x <= 30;x++) {
+                console.log(x);
+                inflacao += 8 * ( valorEconomizadoTrintaAnos / 100 );
+                console.log(valorEconomizadoTrintaAnos);
+                console.log(inflacao);
+            }
+
+            /**
+             *
+             * 7 por cento de inflação
+             * 8 por cento reajuste anual
+             *
+             */
+
+
 
             return {
                 "quantModulos": quantidadeModulos,

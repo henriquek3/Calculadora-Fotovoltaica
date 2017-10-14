@@ -15,7 +15,7 @@ $(document).ready(function () {
                 let html = '';
                 for (let dados of response){                                        
                     html += '<option value="' + dados.uf_nome + '" data-tarifa="' + dados.tarifa + '">' + dados.nome + '</option>';                    
-                    $('#estados').html('<option> - selecione - </option>' + html);
+                    $('#estados').html('<option>Estados</option>' + html);
                 }                                            
             })
             .fail(function (response) {

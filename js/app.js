@@ -4,7 +4,7 @@
 ///<reference path="ICalculoFotoVoltaico.ts"/>
 var App;
 (function (App) {
-    var CalculoFotoVoltaico = (function () {
+    var CalculoFotoVoltaico = /** @class */ (function () {
         function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
@@ -18,6 +18,7 @@ var App;
             this.valorOrcamento = valorOrcamento;
             this.precoKwp = precoKwp;
         }
+        ;
         CalculoFotoVoltaico.prototype.execute = function () {
             var contaEnergia = this.contaEnergia;
             var energiaGerada = this.energiaGerada;
@@ -124,6 +125,19 @@ var App;
             precoMaxOrcamento = precoMaxOrcamentoTmp;
             valorEconomiaMensal = valorTarifa * (energiaGeradaAnual / 12);
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
+            var inflacao = 0;
+            for (var x = 0; x <= 30; x++) {
+                console.log(x);
+                inflacao += 8 * (valorEconomizadoTrintaAnos / 100);
+                console.log(valorEconomizadoTrintaAnos);
+                console.log(inflacao);
+            }
+            /**
+             *
+             * 7 por cento de inflação
+             * 8 por cento reajuste anual
+             *
+             */
             return {
                 "quantModulos": quantidadeModulos,
                 "potenciaKwp": potenciaGeradorSolar.toPrecision(3),
@@ -137,10 +151,11 @@ var App;
                     style: 'currency',
                     currency: 'BRL'
                 }),
-                "precoMinOrcamento": precoMinOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                "precoMaxOrcamento": precoMaxOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+                "precoMinOrcamento": precoMinOrcamento.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+                "precoMaxOrcamento": precoMaxOrcamento.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
             };
         };
+        ;
         return CalculoFotoVoltaico;
     }());
     App.CalculoFotoVoltaico = CalculoFotoVoltaico;
