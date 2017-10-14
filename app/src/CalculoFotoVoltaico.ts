@@ -39,11 +39,13 @@ module App{
             let receitaLiquidaAnual = 0;
             let resultadoFinal = 0;
 
-            //for (let ano=0; ano <= 30; ano++) {
-            custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
-            receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
-            resultadoFinal = cprecoMinOrcamento - receitaLiquidaAnual;
-            //}
+            for (let ano = 0; ano <= 25; ano++) {
+                custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
+                receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
+                resultadoFinal -= cprecoMinOrcamento - receitaLiquidaAnual;
+                cvalorTarifa = reajusteAnualTarifa * cvalorTarifa;
+                cenergiaGeradaAnual = taxaDescontoEnergiaGerada * cenergiaGeradaAnual;
+            }
             return {
                 "receitaLiquidaAnual": receitaLiquidaAnual,
                 "resultadoFinal": resultadoFinal.toPrecision(8)

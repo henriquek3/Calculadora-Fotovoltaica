@@ -18,7 +18,6 @@ var App;
             this.valorOrcamento = valorOrcamento;
             this.precoKwp = precoKwp;
         }
-
         CalculoFotoVoltaico.prototype.calculosTirVpl = function (cvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento) {
             /**
              * @var premissas
@@ -37,11 +36,13 @@ var App;
             var custoOeM = 0;
             var receitaLiquidaAnual = 0;
             var resultadoFinal = 0;
-            //for (let ano=0; ano <= 30; ano++) {
-            custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento);
-            receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
-            resultadoFinal = cprecoMinOrcamento - receitaLiquidaAnual;
-            //}
+            for (var ano = 0; ano <= 25; ano++) {
+                custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento);
+                receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
+                resultadoFinal -= cprecoMinOrcamento - receitaLiquidaAnual;
+                cvalorTarifa = reajusteAnualTarifa * cvalorTarifa;
+                cenergiaGeradaAnual = taxaDescontoEnergiaGerada * cenergiaGeradaAnual;
+            }
             return {
                 "receitaLiquidaAnual": receitaLiquidaAnual,
                 "resultadoFinal": resultadoFinal.toPrecision(8)
