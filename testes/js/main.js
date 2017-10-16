@@ -33,13 +33,7 @@ calc = function calculosTirVpl(
     let resultEnergiaGeradaAual = 0;
 
     for (let ano = 0; ano <= 24; ano++) {
-        console.log({
-            //a:cvalorTarifa.toPrecision(3),
-            a: cenergiaGeradaAnual,
-            b: parseInt(cenergiaGeradaAnualc.toPrecision(2)),
-            c:parseInt(cenergiaGeradaAnuald.toPrecision(5)),
-            d:parseInt(cenergiaGeradaAnuale.toPrecision(5))
-        },ano);
+
         //custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
         //receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
         //resultadoFinal -= cprecoMinOrcamento - receitaLiquidaAnual;
@@ -49,7 +43,14 @@ calc = function calculosTirVpl(
         cenergiaGeradaAnuale = cenergiaGeradaAnuald - cenergiaGeradaAnualc;
         if (ano >= 1 ){
             cenergiaGeradaAnuale = cenergiaGeradaAnuale * perdaRendimentoAnualB;
-            resultEnergiaGeradaAual = cenergiaGeradaAnuale;
+            resultEnergiaGeradaAual = cenergiaGeradaAnuale * perdaRendimentoAnualB;
+            console.log({
+                //a:cvalorTarifa.toPrecision(3),
+                a: cenergiaGeradaAnual,
+                b: parseInt(cenergiaGeradaAnualc.toPrecision(2)),
+                c:parseInt(cenergiaGeradaAnuald.toPrecision(5)),
+                d:parseInt(resultEnergiaGeradaAual.toPrecision(5))
+            },ano);
         }
     }
 };
