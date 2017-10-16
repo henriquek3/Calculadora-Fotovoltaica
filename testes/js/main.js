@@ -2,10 +2,9 @@
  * Created by henri on 16/10/2017.
  */
 
-calc = function calculosTirVpl(
-    cvalorTarifa,
-    cenergiaGeradaAnual,
-    cprecoMinOrcamento
+calc = function calculosTirVpl(fvalorTarifa,
+                               cenergiaGeradaAnual,
+                               cprecoMinOrcamento
 ) {
     /**
      * @var premissas
@@ -26,32 +25,35 @@ calc = function calculosTirVpl(
     let custoOeM = 0;
     let receitaLiquidaAnual = 0;
     let resultadoFinal = 0;
-    let cenergiaGeradaAnualc = 0;
-    let cenergiaGeradaAnuald = 0;
-    let cenergiaGeradaAnuale = 0;
+    let eneGerAnualA = 0;
+    let eneGerAnualB = 0;
+    let eneGerAnualC = 0;
     let cenergiaGeradaAnualf = 0;
-    let resultEnergiaGeradaAual = 0;
+    let resultEneGerAual = 0;
 
     for (let ano = 0; ano <= 24; ano++) {
-
         //custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
-        //receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
+        //receitaLiquidaAnual = (fvalorTarifa * cenergiaGeradaAnual) - custoOeM;
         //resultadoFinal -= cprecoMinOrcamento - receitaLiquidaAnual;
-        cvalorTarifa += reajusteAnualTarifa * cvalorTarifa;
-        cenergiaGeradaAnualc = cenergiaGeradaAnual * perdaRendimentoAnualA;
-        cenergiaGeradaAnuald = cenergiaGeradaAnual * perdaRendimentoAnualB;
-        cenergiaGeradaAnuale = cenergiaGeradaAnuald - cenergiaGeradaAnualc;
-        if (ano >= 1 ){
-            cenergiaGeradaAnuale = cenergiaGeradaAnuale * perdaRendimentoAnualB;
-            resultEnergiaGeradaAual = cenergiaGeradaAnuale * perdaRendimentoAnualB;
-            console.log({
-                //a:cvalorTarifa.toPrecision(3),
-                a: cenergiaGeradaAnual,
-                b: parseInt(cenergiaGeradaAnualc.toPrecision(2)),
-                c:parseInt(cenergiaGeradaAnuald.toPrecision(5)),
-                d:parseInt(resultEnergiaGeradaAual.toPrecision(5))
-            },ano);
+        //fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
+
+        eneGerAnualA = cenergiaGeradaAnual * perdaRendimentoAnualA;
+        eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
+
+        eneGerAnualC = eneGerAnualB - eneGerAnualA;
+
+        if (resultEneGerAual > 0) {
+            eneGerAnualC = resultEneGerAual;
         }
+        resultEneGerAual = eneGerAnualC * perdaRendimentoAnualB;
+
+        console.log({
+            //a:fvalorTarifa.toPrecision(3),
+            a: cenergiaGeradaAnual,
+            b: parseInt(eneGerAnualC),
+            c: parseInt(resultEneGerAual.toPrecision(5))
+        }, ano);
+
     }
 };
 
