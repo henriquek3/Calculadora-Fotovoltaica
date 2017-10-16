@@ -27,7 +27,7 @@ module App{
             let taxaInflacaoAnual = 1.000007;
             let taxaDescontoEnergiaGerada = 0.10;
             let taxaAnualOeM = 0.0025;
-            let perdaRendimentoAnual = 0.50;
+            let perdaRendimentoAnual = 0.995;
             let anoTrocaInversor = 15;
             let custoInversor = 3000;
 
@@ -39,14 +39,23 @@ module App{
             let receitaLiquidaAnual = 0;
             let resultadoFinal = 0;
 
-            for (let ano = 0; ano <= 25; ano++) {
+            for (let ano = 0; ano <= 3; ano++) {
+                console.log({
+                    "cvalorTarifa" :cvalorTarifa,
+                    "cenergiaGeradaAnual" : cenergiaGeradaAnual,
+                    "receitaLiquidaAnual": receitaLiquidaAnual,
+                    "resultadoFinal": resultadoFinal.toPrecision(8)
+                });
+
                 custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
                 receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
                 resultadoFinal -= cprecoMinOrcamento - receitaLiquidaAnual;
-                cvalorTarifa = reajusteAnualTarifa * cvalorTarifa;
-                cenergiaGeradaAnual = taxaDescontoEnergiaGerada * cenergiaGeradaAnual;
+                cvalorTarifa += reajusteAnualTarifa * cvalorTarifa;
+                cenergiaGeradaAnual = (perdaRendimentoAnual * cenergiaGeradaAnual) - (cenergiaGeradaAnual * 0.005);
+
             }
             return {
+                "custoOeM" : custoOeM,
                 "receitaLiquidaAnual": receitaLiquidaAnual,
                 "resultadoFinal": resultadoFinal.toPrecision(8)
             }
@@ -143,7 +152,6 @@ module App{
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
 
             console.log(this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento));
-
 
 
             return {

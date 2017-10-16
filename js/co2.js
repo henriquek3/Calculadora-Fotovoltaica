@@ -20,7 +20,6 @@ function resultado(objeto,indice) {
     valores[13] = 0.00013;
     valores[14] = 0.00003;
     result = objeto * valores[indice];
-    console.log(result);
     total(result);
 }
 

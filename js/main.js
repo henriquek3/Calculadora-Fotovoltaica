@@ -1,7 +1,12 @@
 $(document).ready(function () {
+    /**
+     * @var saber se já esta carregado o uf estados;
+     * @type {string}
+     */
     let ufloaded = '';
-    /*
-     @todo popular select estados
+
+    /**
+     * @todo popular select estados
      */
     $('#uf').on('mouseenter', function () {
         if (ufloaded === '') {
@@ -24,14 +29,13 @@ $(document).ready(function () {
         }
     });
 
-    /*
-     @todo carregar cidades de acordo com o estado
+    /**
+     * @todo carregar cidades de acordo com o estado
      */
     $('#estados').change(function () {
         $uf = $(this);        
         uf = $uf.val();
         tf = $uf.find(':selected').data('tarifa');
-        console.log(uf,tf);
         $.ajax({
             method: 'GET',
             url: 'php/cidades.php',
@@ -52,8 +56,8 @@ $(document).ready(function () {
         });
     });
 
-    /*
-     @todo ir para tela de resultados
+    /**
+     * @todo ir para tela de resultados
      */
     $('.ui.big.primary.button').click(function () {
         $('#header-calculadora').css('display', 'none');
@@ -66,8 +70,8 @@ $(document).ready(function () {
         document.getElementById("carro-eletrico").innerHTML = Math.round(kmtotal);
     });
 
-    /*
-     @todo verifica se os campos foram preenchidos
+    /**
+     * @todo verifica se os campos foram preenchidos
      */
     $('#cidades').change(function () {
         let $kwh = document.getElementById('kwh').value;

@@ -59,6 +59,5 @@ module App{
         (<HTMLSpanElement>document.getElementById('precoMaxOrcamento')).textContent = obj.precoMaxOrcamento;
         (<HTMLSpanElement>document.getElementById('area-instalacao')).textContent = obj.areaInst.toPrecision(3);
 
-
     }
 }

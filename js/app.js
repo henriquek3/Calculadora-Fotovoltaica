@@ -4,7 +4,7 @@
 ///<reference path="ICalculoFotoVoltaico.ts"/>
 var App;
 (function (App) {
-    var CalculoFotoVoltaico = (function () {
+    var CalculoFotoVoltaico = /** @class */ (function () {
         function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
@@ -18,6 +18,7 @@ var App;
             this.valorOrcamento = valorOrcamento;
             this.precoKwp = precoKwp;
         }
+        ;
         CalculoFotoVoltaico.prototype.calculosTirVpl = function (cvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento) {
             /**
              * @var premissas
@@ -26,7 +27,7 @@ var App;
             var taxaInflacaoAnual = 1.000007;
             var taxaDescontoEnergiaGerada = 0.10;
             var taxaAnualOeM = 0.0025;
-            var perdaRendimentoAnual = 0.50;
+            var perdaRendimentoAnual = 0.995;
             var anoTrocaInversor = 15;
             var custoInversor = 3000;
             /**
@@ -36,18 +37,26 @@ var App;
             var custoOeM = 0;
             var receitaLiquidaAnual = 0;
             var resultadoFinal = 0;
-            for (var ano = 0; ano <= 25; ano++) {
+            for (var ano = 0; ano <= 3; ano++) {
+                console.log({
+                    "cvalorTarifa": cvalorTarifa,
+                    "cenergiaGeradaAnual": cenergiaGeradaAnual,
+                    "receitaLiquidaAnual": receitaLiquidaAnual,
+                    "resultadoFinal": resultadoFinal.toPrecision(8)
+                });
                 custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento);
                 receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
                 resultadoFinal -= cprecoMinOrcamento - receitaLiquidaAnual;
-                cvalorTarifa = reajusteAnualTarifa * cvalorTarifa;
-                cenergiaGeradaAnual = taxaDescontoEnergiaGerada * cenergiaGeradaAnual;
+                cvalorTarifa += reajusteAnualTarifa * cvalorTarifa;
+                cenergiaGeradaAnual = (perdaRendimentoAnual * cenergiaGeradaAnual) - (cenergiaGeradaAnual * 0.005);
             }
             return {
+                "custoOeM": custoOeM,
                 "receitaLiquidaAnual": receitaLiquidaAnual,
                 "resultadoFinal": resultadoFinal.toPrecision(8)
             };
         };
+        ;
         //=-$B$5*($B$9*((1+$B$3)^0))+SE($B$7=D2;-$B$8;0)
         //=-0,0025*(44889,31*((1+0,7)^0))
         //=-0,0025*(44889,31*1,000007)
@@ -175,6 +184,7 @@ var App;
                 "precoMaxOrcamento": precoMaxOrcamento.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
             };
         };
+        ;
         return CalculoFotoVoltaico;
     }());
     App.CalculoFotoVoltaico = CalculoFotoVoltaico;
