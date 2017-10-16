@@ -37,9 +37,9 @@ var App;
             var custoOeM = 0;
             var receitaLiquidaAnual = 0;
             var resultadoFinal = 0;
-            for (var ano = 0; ano <= 3; ano++) {
+            for (var ano = 0; ano <= 29; ano++) {
                 console.log({
-                    "cvalorTarifa": cvalorTarifa,
+                    "cvalorTarifa": cvalorTarifa.round(),
                     "cenergiaGeradaAnual": cenergiaGeradaAnual,
                     "receitaLiquidaAnual": receitaLiquidaAnual,
                     "resultadoFinal": resultadoFinal.toPrecision(8)

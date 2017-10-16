@@ -39,9 +39,9 @@ module App{
             let receitaLiquidaAnual = 0;
             let resultadoFinal = 0;
 
-            for (let ano = 0; ano <= 3; ano++) {
+            for (let ano = 0; ano <= 29; ano++) {
                 console.log({
-                    "cvalorTarifa" :cvalorTarifa,
+                    "cvalorTarifa" :cvalorTarifa.round(),
                     "cenergiaGeradaAnual" : cenergiaGeradaAnual,
                     "receitaLiquidaAnual": receitaLiquidaAnual,
                     "resultadoFinal": resultadoFinal.toPrecision(8)
