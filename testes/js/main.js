@@ -28,33 +28,42 @@ calc = function calculosTirVpl(fvalorTarifa,
     let eneGerAnualA = 0;
     let eneGerAnualB = 0;
     let eneGerAnualC = 0;
-    let cenergiaGeradaAnualf = 0;
     let resultEneGerAual = 0;
+    let tempA = 0;
+    let tempB = 0;
+    let tempC = 0;
+    let tempD = 0;
 
-    for (let ano = 0; ano <= 24; ano++) {
-        //custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
-        //receitaLiquidaAnual = (fvalorTarifa * cenergiaGeradaAnual) - custoOeM;
-        //resultadoFinal -= cprecoMinOrcamento - receitaLiquidaAnual;
-        //fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
+    custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
+    /**
+     * @todo calcular tarifa
+     */
+    for (let ano = 0; ano < 24; ano++) {
+        fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
+        custoOeM = custoOeM + (0.07 * custoOeM);
+    }
 
+    /**
+     * @todo calcular energia gerada
+     */
+    for (let ano = 0; ano < 23; ano++) {
         eneGerAnualA = cenergiaGeradaAnual * perdaRendimentoAnualA;
         eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
-
         eneGerAnualC = eneGerAnualB - eneGerAnualA;
-
         if (resultEneGerAual > 0) {
             eneGerAnualC = resultEneGerAual;
         }
         resultEneGerAual = eneGerAnualC * perdaRendimentoAnualB;
-
-        console.log({
-            //a:fvalorTarifa.toPrecision(3),
-            a: cenergiaGeradaAnual,
-            b: parseInt(eneGerAnualC),
-            c: parseInt(resultEneGerAual.toPrecision(5))
-        }, ano);
-
     }
+
+
+    console.log({
+        a: fvalorTarifa.toPrecision(3),
+        b: parseInt(resultEneGerAual.toPrecision(5)),
+        c: fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5)),
+        d: custoOeM,
+        e: (fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))) - custoOeM
+    });
 };
 
 console.log(calc(0.75,11424,43651.65));
