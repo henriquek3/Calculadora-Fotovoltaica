@@ -24,34 +24,34 @@ calc = function calculosTirVpl(fvalorTarifa,
     let receitaAnual = 0;
     let custoOeM = 0;
     let receitaLiquidaAnual = 0;
-    let resultadoFinal = 0;//cprecoMinOrcamento;
+    let resultadoFinal = 0;
     let eneGerAnualA = 0;
     let eneGerAnualB = 0;
     let eneGerAnualC = 0;
     let resultEneGerAual = 0;
+    let tempA = -3000;
 
     custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
 
     /**
      * @todo calcular energia gerada
      */
-    for (let ano = 0; ano < 1; ano++) {
+    for (let ano = 0; ano < 23; ano++) {
         eneGerAnualA = cenergiaGeradaAnual * perdaRendimentoAnualA;
         eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
         eneGerAnualC = eneGerAnualB - eneGerAnualA;
-        console.log(ano,resultadoFinal.toPrecision(6),eneGerAnualC.toPrecision(5));
         if (ano < 1){
-            resultadoFinal -= fvalorTarifa * eneGerAnualC;
+            tempA = fvalorTarifa * eneGerAnualC;
         }
 
         if (resultEneGerAual > 0) {
             eneGerAnualC = resultEneGerAual;
         }
+
         resultEneGerAual = eneGerAnualC * perdaRendimentoAnualB;
         fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
         custoOeM = custoOeM + (0.07 * custoOeM);
-        resultadoFinal -= fvalorTarifa * resultEneGerAual;
-        console.log(ano,resultadoFinal.toPrecision(6));
+        //resultadoFinal = fvalorTarifa * resultEneGerAual;
         /**
          * @todo terminar de calcular a tarifa
          */
@@ -59,20 +59,22 @@ calc = function calculosTirVpl(fvalorTarifa,
              for (let anox = 0; anox < 1; anox++) {
                  fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
                  custoOeM = custoOeM + (0.07 * custoOeM);
-                 resultadoFinal -= fvalorTarifa * resultEneGerAual;
-                 console.log(anox,ano,resultadoFinal.toPrecision(6));
+                 //resultadoFinal = fvalorTarifa * resultEneGerAual;
              }
          }
+        resultadoFinal = fvalorTarifa * eneGerAnualC;
+        tempA -= resultadoFinal;
+        console.log(resultadoFinal,tempA,ano);
     }
     console.log({
         a: fvalorTarifa.toPrecision(3),
         b: parseInt(resultEneGerAual.toPrecision(5)),
-        c: fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5)),
-        d: custoOeM,
-        e: (fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))) - custoOeM
+        c: parseInt(fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))),
+        d: parseInt(custoOeM),
+        e: parseInt((fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))) - custoOeM)
     });
 };
-console.log(calc(0.75,11424,43651.65));
+calc(0.75,11424,43651.65);
 /*
 
 a:"4.76"
