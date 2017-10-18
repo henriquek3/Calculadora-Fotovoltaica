@@ -19,46 +19,70 @@ module App{
             public precoKwp: number
         ){};
 
-        calculosTirVpl(cvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento): any {
+        calculosTirVpl(fvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento): any {
             /**
              * @var premissas
              */
             let reajusteAnualTarifa = 0.08;
             let taxaInflacaoAnual = 1.000007;
-            let taxaDescontoEnergiaGerada = 0.10;
             let taxaAnualOeM = 0.0025;
-            let perdaRendimentoAnual = 0.995;
-            let anoTrocaInversor = 15;
+            let perdaRendimentoAnualA = 0.005;
+            let perdaRendimentoAnualB = 0.995;
             let custoInversor = 3000;
 
             /**
              * @var temps
              */
-            let receitaAnual = 0;
-            let custoOeM = 0;
-            let receitaLiquidaAnual = 0;
             let resultadoFinal = 0;
+            let eneGerAnualA = 0;
+            let eneGerAnualB = 0;
+            let eneGerAnualC = 0;
+            let resultEneGerAual = 0;
+            let resultFinalInvest = 3000;
+            let custoOeM = 0;
+            let receitaAnualFv = 0;
+            let receitaLiquidaAnual = 0;
+            custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
 
-            for (let ano = 0; ano <= 29; ano++) {
-                console.log({
-                    "cvalorTarifa" :cvalorTarifa.round(),
-                    "cenergiaGeradaAnual" : cenergiaGeradaAnual,
-                    "receitaLiquidaAnual": receitaLiquidaAnual,
-                    "resultadoFinal": resultadoFinal.toPrecision(8)
-                });
-
-                custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
-                receitaLiquidaAnual = (cvalorTarifa * cenergiaGeradaAnual) - custoOeM;
-                resultadoFinal -= cprecoMinOrcamento - receitaLiquidaAnual;
-                cvalorTarifa += reajusteAnualTarifa * cvalorTarifa;
-                cenergiaGeradaAnual = (perdaRendimentoAnual * cenergiaGeradaAnual) - (cenergiaGeradaAnual * 0.005);
-
+            /**
+             * @todo calcular energia gerada
+             */
+            for (let ano = 0; ano < 23; ano++) {
+                eneGerAnualA = cenergiaGeradaAnual * perdaRendimentoAnualA;
+                eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
+                eneGerAnualC = eneGerAnualB - eneGerAnualA;
+                if (ano < 1) {
+                    resultFinalInvest = fvalorTarifa * eneGerAnualC;
+                }
+                if (resultEneGerAual > 0) {
+                    eneGerAnualC = resultEneGerAual;
+                }
+                resultEneGerAual = eneGerAnualC * perdaRendimentoAnualB;
+                fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
+                custoOeM = custoOeM + (0.07 * custoOeM);
+                /**
+                 * @todo terminar de calcular a tarifa
+                 */
+                if (ano === 22) {
+                    for (let anox = 0; anox < 1; anox++) {
+                        fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
+                        custoOeM = custoOeM + (0.07 * custoOeM);
+                    }
+                }
+                resultadoFinal = fvalorTarifa * eneGerAnualC;
+                resultFinalInvest -= resultadoFinal;
             }
+            resultFinalInvest = (resultFinalInvest * -1) - custoInversor;
+            receitaAnualFv = fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5));
+            receitaLiquidaAnual = (fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))) - custoOeM;
             return {
-                "custoOeM" : custoOeM,
-                "receitaLiquidaAnual": receitaLiquidaAnual,
-                "resultadoFinal": resultadoFinal.toPrecision(8)
-            }
+                fvalorTarifa: fvalorTarifa.toPrecision(3),
+                resultEneGerAual: parseInt(resultEneGerAual.toPrecision(5)),
+                receitaAnualFv: receitaAnualFv.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                custoOeM: custoOeM.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                receitaLiquidaAnual: receitaLiquidaAnual.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                resultFinalInvest: resultFinalInvest.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+            };
         };
 
         //=-$B$5*($B$9*((1+$B$3)^0))+SE($B$7=D2;-$B$8;0)
@@ -151,24 +175,27 @@ module App{
             valorEconomiaMensal = valorTarifa * ( energiaGeradaAnual / 12);
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
 
-            console.log(this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento));
-
+            let calcTirVpl = this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento);
+            console.log(calcTirVpl);
 
             return {
-                "quantModulos": quantidadeModulos,
-                "potenciaKwp": potenciaGeradorSolar.toPrecision(3),
-                "areaInst": areaInstalacao,
-                "energiaGeradaAnual": energiaGeradaAnual.toPrecision(6),
-                "valorEconomizadoTrintaAnos": valorEconomizadoTrintaAnos.toLocaleString('pt-br', {
+                quantModulos: quantidadeModulos,
+                potenciaKwp: potenciaGeradorSolar.toPrecision(3),
+                areaInst: areaInstalacao,
+                energiaGeradaAnual: energiaGeradaAnual.toPrecision(6),
+                valorEconomizadoTrintaAnos: valorEconomizadoTrintaAnos.toLocaleString('pt-br', {
                     style: 'currency',
                     currency: 'BRL'
                 }),
-                "valorEconomiaMensal": valorEconomiaMensal.toLocaleString('pt-br', {
-                    style: 'currency',
-                    currency: 'BRL'
-                }),
-                "precoMinOrcamento": precoMinOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                "precoMaxOrcamento": precoMaxOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+                valorEconomiaMensal: valorEconomiaMensal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                precoMinOrcamento: precoMinOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                precoMaxOrcamento: precoMaxOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                fvalorTarifa: calcTirVpl.fvalorTarifa,
+                resultEneGerAual: calcTirVpl.resultEneGerAual,
+                receitaAnualFv: calcTirVpl.receitaAnualFv,
+                custoOeM: calcTirVpl.custoOeM,
+                receitaLiquidaAnual: calcTirVpl.receitaLiquidaAnual,
+                resultFinalInvest: calcTirVpl.resultFinalInvest
             };
 
         };

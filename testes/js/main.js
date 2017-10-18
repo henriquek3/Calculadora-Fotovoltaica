@@ -2,10 +2,7 @@
  * Created by henri on 16/10/2017.
  */
 
-calc = function calculosTirVpl(fvalorTarifa,
-                               cenergiaGeradaAnual,
-                               cprecoMinOrcamento
-) {
+calc = function calculosTirVpl(fvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento) {
     /**
      * @var premissas
      */
@@ -60,23 +57,13 @@ calc = function calculosTirVpl(fvalorTarifa,
     resultFinalInvest = (resultFinalInvest * -1) - custoInversor;
     receitaAnualFv = fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5));
     receitaLiquidaAnual = (fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))) - custoOeM;
-    console.log({
+    return {
         fvalorTarifa: fvalorTarifa.toPrecision(3),
         resultEneGerAual: parseInt(resultEneGerAual.toPrecision(5)),
         receitaAnualFv: receitaAnualFv.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
         custoOeM: custoOeM.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
         receitaLiquidaAnual: receitaLiquidaAnual.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
         resultFinalInvest: resultFinalInvest.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
-    });
+    };
 };
-calc(0.75, 3809, 17175.69);
-
-/*
-
-a:"4.76"
-b:10078
-c:47929.81460242933
-d:553.5468421026877
-e:47376.26776032664
-
- */
+console.log(calc(0.75, 3809, 17175.69));
