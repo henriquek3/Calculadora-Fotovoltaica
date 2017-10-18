@@ -18,16 +18,16 @@
     <title>Calculadora</title>
     <style>
         .ui.center.aligned.header {
-            margin-top: 10px;
+            /*margin-top: 10px;*/
         }
 
         .btn-left-right button {
-            width: 225px;
+            /*width: 225px;*/
         }
 
     </style>
 </head>
-<body class="ui container">
+<body>
 <header id="header-calculadora">
     <div class="ui center aligned header">
         <h2 class="ui icon header">
@@ -39,38 +39,36 @@
         </h2>
     </div>
 </header>
-<main>
+<main class="ui container">
     <!-- Corpo da Calculadora -->
     <div class="wrapper" id="corpo-calculadora">
-        <div class="ui basic segment">
+        <div> <!--class="ui basic segment"-->
             <div style="text-align: center;">
                 <h3 class="">Informe a média anual de consumo em Quilowatt-Hora <!--, caso não saiba <a href="#">clique aqui!</a>--> <i class="circular green lightning icon"></i></h3>
             </div>
             <p></p>
             <br>
-            <div style="margin-left: 23%;margin-right: -31%">
-                <div>
-                    <div id="pconsumo">
-                        <div class="ui big form">
-                            <div class="inline fields">
-                                <div class="two wide field">
-                                    <label for="kwh">Média kWh</label>
-                                </div>
-                                <div class="eight wide field">
-                                    <input type="number" id="kwh" pattern="[0-9]" required>
-                                    <span id="find-media"><a id="modalsemantic" href="#">Encontrar média?</a></span>
-                                </div>
-                            </div>
+            <div style="/*margin-left: 23%;margin-right: -31%*/">
+                <div class="ui big form">
+                    <div class="inline fields">
+                        <div class="two wide field">
+                            <label for="kwh">Média:</label>
+                        </div>
+                        <div class="six wide field">
+                            <input type="number" id="kwh" pattern="[0-9]" required>
+                        </div>
+                        <div class="two wide field">
+                            <span id="find-media"><a id="modalsemantic" href="#">Encontrar média?</a></span>
                         </div>
                     </div>
                 </div>
             </div>
             <br>
-            <div style="text-align: center;">
+            <div style="/*text-align: center;*/">
                 <h3>O próximo passo é a localização <i class="circular green marker icon"></i></h3>
             </div>
             <p></p>
-            <div style="margin-left: 29%">
+            <div style="">
                 <div class="">
                     <div class="ui big form">
                         <div class="inline fields" id="uf">
@@ -94,7 +92,7 @@
                             </div>
                         </div>
                         <div class="inline fields" style="display: none">
-                            <div class="two wide field">
+                            <div class="three wide field">
                                 <label for="tarifa">Tarifa:</label>
                             </div>
                             <div class="six wide field">
@@ -108,9 +106,9 @@
                 </div>
             </div>
             <p></p>
-            <div align="center">
+            <div> <!--align="center"-->
                 <div>
-                    <button type="submit" class="ui big disabled primary button"><span class="txt-button">Calcular</span></button>
+                    <button type="submit" class="fluid ui big disabled primary button"><span class="txt-button">Calcular</span></button>
                 </div>
             </div>
         </div>
