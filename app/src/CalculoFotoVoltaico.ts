@@ -47,7 +47,7 @@ module App{
             /**
              * @todo calcular energia gerada
              */
-            for (let ano = 0; ano < 28; ano++) {
+            for (let ano = 0; ano < 23; ano++) {
                 eneGerAnualA = cenergiaGeradaAnual * perdaRendimentoAnualA;
                 eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
                 eneGerAnualC = eneGerAnualB - eneGerAnualA;
@@ -63,7 +63,7 @@ module App{
                 /**
                  * @todo terminar de calcular a tarifa
                  */
-                if (ano === 27) {
+                if (ano === 22) {
                     for (let anox = 0; anox < 1; anox++) {
                         fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
                         custoOeM = custoOeM + (0.07 * custoOeM);
