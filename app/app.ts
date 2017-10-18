@@ -51,13 +51,21 @@ module App{
         console.log(obj);
 
         (<HTMLSpanElement>document.getElementById('geracao-anual')).textContent = obj.energiaGeradaAnual;
+        (<HTMLSpanElement>document.getElementById('mgeracao-anual')).textContent = obj.energiaGeradaAnual;
         (<HTMLSpanElement>document.getElementById('tamanho-sistema')).textContent = obj.potenciaKwp;
+        (<HTMLSpanElement>document.getElementById('mtamanho-sistema')).textContent = obj.potenciaKwp;
         (<HTMLSpanElement>document.getElementById('qtd-modulos')).textContent = obj.quantModulos;
+        (<HTMLSpanElement>document.getElementById('mqtd-modulos')).textContent = obj.quantModulos;
         (<HTMLSpanElement>document.getElementById('economial-mensal')).textContent = obj.valorEconomiaMensal;
+        (<HTMLSpanElement>document.getElementById('meconomial-mensal')).textContent = obj.valorEconomiaMensal;
         (<HTMLSpanElement>document.getElementById('economia-trinta-anos')).textContent = obj.resultFinalInvest;
+        (<HTMLSpanElement>document.getElementById('meconomia-trinta-anos')).textContent = obj.resultFinalInvest;
         (<HTMLSpanElement>document.getElementById('precoMinOrcamento')).textContent = obj.precoMinOrcamento;
+        (<HTMLSpanElement>document.getElementById('mprecoMinOrcamento')).textContent = obj.precoMinOrcamento;
         (<HTMLSpanElement>document.getElementById('precoMaxOrcamento')).textContent = obj.precoMaxOrcamento;
+        (<HTMLSpanElement>document.getElementById('mprecoMaxOrcamento')).textContent = obj.precoMaxOrcamento;
         (<HTMLSpanElement>document.getElementById('area-instalacao')).textContent = obj.areaInst.toPrecision(3);
+        (<HTMLSpanElement>document.getElementById('marea-instalacao')).textContent = obj.areaInst.toPrecision(3);
 
     }
 }

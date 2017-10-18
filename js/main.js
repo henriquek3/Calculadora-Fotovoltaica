@@ -68,6 +68,7 @@ $(document).ready(function () {
         let k = document.getElementById('kwh').value;
         let kmtotal = 12 * (k / 5.565);
         document.getElementById("carro-eletrico").innerHTML = Math.round(kmtotal);
+        document.getElementById("mcarro-eletrico").innerHTML = Math.round(kmtotal);
     });
 
     /**

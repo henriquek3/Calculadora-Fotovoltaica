@@ -4,7 +4,7 @@
 ///<reference path="ICalculoFotoVoltaico.ts"/>
 var App;
 (function (App) {
-    var CalculoFotoVoltaico = (function () {
+    var CalculoFotoVoltaico = /** @class */ (function () {
         function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
@@ -18,6 +18,7 @@ var App;
             this.valorOrcamento = valorOrcamento;
             this.precoKwp = precoKwp;
         }
+        ;
         CalculoFotoVoltaico.prototype.calculosTirVpl = function (fvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento) {
             /**
              * @var premissas
@@ -75,12 +76,13 @@ var App;
             return {
                 fvalorTarifa: fvalorTarifa.toPrecision(3),
                 resultEneGerAual: parseInt(resultEneGerAual.toPrecision(5)),
-                receitaAnualFv: receitaAnualFv.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                custoOeM: custoOeM.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                receitaLiquidaAnual: receitaLiquidaAnual.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                resultFinalInvest: resultFinalInvest.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+                receitaAnualFv: receitaAnualFv.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+                custoOeM: custoOeM.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+                receitaLiquidaAnual: receitaLiquidaAnual.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+                resultFinalInvest: resultFinalInvest.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
             };
         };
+        ;
         CalculoFotoVoltaico.prototype.execute = function () {
             var contaEnergia = this.contaEnergia;
             var energiaGerada = this.energiaGerada;
@@ -197,12 +199,13 @@ var App;
                     style: 'currency',
                     currency: 'BRL'
                 }),
-                valorEconomiaMensal: valorEconomiaMensal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                precoMinOrcamento: precoMinOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                precoMaxOrcamento: precoMaxOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                valorEconomiaMensal: valorEconomiaMensal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+                precoMinOrcamento: precoMinOrcamento.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+                precoMaxOrcamento: precoMaxOrcamento.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
                 resultFinalInvest: calcTirVpl.resultFinalInvest
             };
         };
+        ;
         return CalculoFotoVoltaico;
     }());
     App.CalculoFotoVoltaico = CalculoFotoVoltaico;
@@ -247,12 +250,20 @@ var App;
         obj = calculo.execute();
         console.log(obj);
         document.getElementById('geracao-anual').textContent = obj.energiaGeradaAnual;
+        document.getElementById('mgeracao-anual').textContent = obj.energiaGeradaAnual;
         document.getElementById('tamanho-sistema').textContent = obj.potenciaKwp;
+        document.getElementById('mtamanho-sistema').textContent = obj.potenciaKwp;
         document.getElementById('qtd-modulos').textContent = obj.quantModulos;
+        document.getElementById('mqtd-modulos').textContent = obj.quantModulos;
         document.getElementById('economial-mensal').textContent = obj.valorEconomiaMensal;
+        document.getElementById('meconomial-mensal').textContent = obj.valorEconomiaMensal;
         document.getElementById('economia-trinta-anos').textContent = obj.resultFinalInvest;
+        document.getElementById('meconomia-trinta-anos').textContent = obj.resultFinalInvest;
         document.getElementById('precoMinOrcamento').textContent = obj.precoMinOrcamento;
+        document.getElementById('mprecoMinOrcamento').textContent = obj.precoMinOrcamento;
         document.getElementById('precoMaxOrcamento').textContent = obj.precoMaxOrcamento;
+        document.getElementById('mprecoMaxOrcamento').textContent = obj.precoMaxOrcamento;
         document.getElementById('area-instalacao').textContent = obj.areaInst.toPrecision(3);
+        document.getElementById('marea-instalacao').textContent = obj.areaInst.toPrecision(3);
     };
 })(App || (App = {}));

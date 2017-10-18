@@ -114,49 +114,99 @@
             </h2>
         </div>
     </header>
-    <section class="" id="corpo-resultado" style="display: none">
-        <div class="ui horizontal raised segments">
-            <div class="ui blue segment">
-                <h3 class="ui center aligned header">Valor de Investimento <i class="dollar icon"></i></h3>
-                <div class="ui divider"></div>
+    <section class="ui grid container" id="corpo-resultado" style="display: none">
+        <div class="computer only row">
+            <div class="sixteen wide column">
+                <div class="ui horizontal raised segments">
+                    <div class="ui blue segment">
+                        <h3 class="ui center aligned header">Valor de Investimento <i class="dollar icon"></i></h3>
+                        <div class="ui divider"></div>
 
-                <h4>Estimativa</h4>
-                <p>De <span id="precoMinOrcamento"></span> a <span id="precoMaxOrcamento"></span></p>
+                        <h4>Estimativa</h4>
+                        <p>De <span id="precoMinOrcamento"></span> a <span id="precoMaxOrcamento"></span></p>
 
-                <h4>Economia mensal</h4>
-                <p><span id="economial-mensal"></span></p>
+                        <h4>Economia mensal</h4>
+                        <p><span id="economial-mensal"></span></p>
 
-                <h4>Economia total acumulada em 25 anos</h4>
-                <p><span id="economia-trinta-anos"></span></p>
+                        <h4>Economia total acumulada em 25 anos</h4>
+                        <p><span id="economia-trinta-anos"></span></p>
 
+                    </div>
+                    <div class="ui red segment">
+                        <h3 class="ui center aligned header">Sistema Indicado <i class="lightning icon"></i></h3>
+                        <div class="ui divider"></div>
+
+                        <h4>Tamanho do Sistema</h4>
+                        <p><span id="tamanho-sistema"></span> kWp</p>
+
+                        <h4>Módulos e Área necessária</h4>
+                        <p><span id="qtd-modulos"></span> módulos e <span id="area-instalacao"></span> m2</p>
+
+                        <h4>Produção anual estimada</h4>
+                        <p><span id="geracao-anual"></span> KWh</p>
+
+                    </div>
+                    <div class="ui green segment">
+                        <h3 class="ui center aligned header">Estimativa Ambiental <i class="leaf icon"></i></h3>
+                        <div class="ui divider"></div>
+
+                        <h4>Redução de CO2 na atmosfera</h4>
+                        <p><span id="reducao-co"></span> toneladas de CO2</p>
+
+                        <h4>Equivalente a árvores plantadas</h4>
+                        <p><span id="arvores-plantadas"></span> árvores plantadas</p>
+
+                        <h4>Equivalente a KM rodados de carro</h4>
+                        <p><span id="carro-eletrico"></span> km </p>
+
+                    </div>
+                </div>
             </div>
-            <div class="ui red segment">
-                <h3 class="ui center aligned header">Sistema Indicado <i class="lightning icon"></i></h3>
-                <div class="ui divider"></div>
+        </div>
+        <div class="tablet only mobile only sixteen wide column">
+            <div class="ui raised segments">
+                <div class="ui blue segment">
+                    <h3 class="ui center aligned header">Valor de Investimento <i class="dollar icon"></i></h3>
+                    <div class="ui divider"></div>
 
-                <h4>Tamanho do Sistema</h4>
-                <p><span id="tamanho-sistema"></span> kWp</p>
+                    <h4>Estimativa</h4>
+                    <p>De <span id="mprecoMinOrcamento"></span> a <span id="precoMaxOrcamento"></span></p>
 
-                <h4>Módulos e Área necessária</h4>
-                <p><span id="qtd-modulos"></span> módulos e <span id="area-instalacao"></span> m2</p>
+                    <h4>Economia mensal</h4>
+                    <p><span id="meconomial-mensal"></span></p>
 
-                <h4>Produção anual estimada</h4>
-                <p><span id="geracao-anual"></span> KWh</p>
+                    <h4>Economia total acumulada em 25 anos</h4>
+                    <p><span id="meconomia-trinta-anos"></span></p>
 
-            </div>
-            <div class="ui green segment">
-                <h3 class="ui center aligned header">Estimativa Ambiental <i class="leaf icon"></i></h3>
-                <div class="ui divider"></div>
+                </div>
+                <div class="ui red segment">
+                    <h3 class="ui center aligned header">Sistema Indicado <i class="lightning icon"></i></h3>
+                    <div class="ui divider"></div>
 
-                <h4>Redução de CO2 na atmosfera</h4>
-                <p><span id="reducao-co"></span> toneladas de CO2</p>
+                    <h4>Tamanho do Sistema</h4>
+                    <p><span id="mtamanho-sistema"></span> kWp</p>
 
-                <h4>Equivalente a árvores plantadas</h4>
-                <p><span id="arvores-plantadas"></span> árvores plantadas</p>
+                    <h4>Módulos e Área necessária</h4>
+                    <p><span id="mqtd-modulos"></span> módulos e <span id="area-instalacao"></span> m2</p>
 
-                <h4>Equivalente a KM rodados de carro</h4>
-                <p><span id="carro-eletrico"></span> km </p>
+                    <h4>Produção anual estimada</h4>
+                    <p><span id="mgeracao-anual"></span> KWh</p>
 
+                </div>
+                <div class="ui green segment">
+                    <h3 class="ui center aligned header">Estimativa Ambiental <i class="leaf icon"></i></h3>
+                    <div class="ui divider"></div>
+
+                    <h4>Redução de CO2 na atmosfera</h4>
+                    <p><span id="mreducao-co"></span> toneladas de CO2</p>
+
+                    <h4>Equivalente a árvores plantadas</h4>
+                    <p><span id="marvores-plantadas"></span> árvores plantadas</p>
+
+                    <h4>Equivalente a KM rodados de carro</h4>
+                    <p><span id="mcarro-eletrico"></span> km </p>
+
+                </div>
             </div>
         </div>
     </section>

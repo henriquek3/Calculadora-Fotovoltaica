@@ -35,6 +35,8 @@ function total(arg) {
     tco2e = 12 * (10 / (soma * 12));
     //document.getElementById("reducao-co").innerHTML = Math.round(tco2e);
     document.getElementById("reducao-co").innerHTML = tco2e.toPrecision(3);
+    document.getElementById("mreducao-co").innerHTML = tco2e.toPrecision(3);
     arv = 12 * (soma * 3.6);
     document.getElementById("arvores-plantadas").innerHTML = Math.round(arv);
+    document.getElementById("marvores-plantadas").innerHTML = Math.round(arv);
 }
