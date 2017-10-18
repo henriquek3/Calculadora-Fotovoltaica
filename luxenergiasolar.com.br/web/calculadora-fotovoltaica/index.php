@@ -289,7 +289,7 @@
             </p>
         </div>
 
-        <div class="" style="margin-top: 257px;margin-left: 37px;">
+        <div class="" style="margin-top: 249px;margin-left: 37px;">
             <i class="huge pointing right blue icon"></i>
             <p><b>Aqui!</b></p>
         </div>
@@ -423,7 +423,6 @@
 <script>
     $(document).ready(function(){
         let tam = $(window).width();
-
         if (tam >=1024 ){
             $('#desktopModal').modal('attach events','#modalsemantic','show');
         }else{
