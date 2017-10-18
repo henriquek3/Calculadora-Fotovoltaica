@@ -11,26 +11,20 @@ calc = function calculosTirVpl(fvalorTarifa,
      */
     let reajusteAnualTarifa = 0.08;
     let taxaInflacaoAnual = 1.000007;
-    let taxaDescontoEnergiaGerada = 0.10;
     let taxaAnualOeM = 0.0025;
     let perdaRendimentoAnualA = 0.005;
     let perdaRendimentoAnualB = 0.995;
-    let anoTrocaInversor = 15;
     let custoInversor = 3000;
 
     /**
      * @var temps
      */
-    let receitaAnual = 0;
-    let custoOeM = 0;
-    let receitaLiquidaAnual = 0;
     let resultadoFinal = 0;
     let eneGerAnualA = 0;
     let eneGerAnualB = 0;
     let eneGerAnualC = 0;
     let resultEneGerAual = 0;
-    let resultFinalInvest = -3000;
-    let receitaAnualFv = 0;
+    let resultFinalInvest = 3000;
 
     custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
 
@@ -48,13 +42,8 @@ calc = function calculosTirVpl(fvalorTarifa,
         if (resultEneGerAual > 0) {
             eneGerAnualC = resultEneGerAual;
         }
-
         resultEneGerAual = eneGerAnualC * perdaRendimentoAnualB;
         fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
-        if (ano === 13) {
-            custoOeM += 3000;
-            console.log({custoOeM: custoOeM, ano});
-        }
         custoOeM = custoOeM + (0.07 * custoOeM);
         /**
          * @todo terminar de calcular a tarifa
@@ -68,6 +57,7 @@ calc = function calculosTirVpl(fvalorTarifa,
         resultadoFinal = fvalorTarifa * eneGerAnualC;
         resultFinalInvest -= resultadoFinal;
     }
+    resultFinalInvest = (resultFinalInvest * -1) - custoInversor;
     receitaAnualFv = fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5));
     receitaLiquidaAnual = (fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))) - custoOeM;
     console.log({
