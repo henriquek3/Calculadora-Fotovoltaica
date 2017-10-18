@@ -1,4 +1,5 @@
 <!doctype html>
+<!--suppress Annotator -->
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -202,6 +203,7 @@
                 </div>
             </div>
         </div>
+        <!-- responsive -->
         <div class="tablet only mobile only sixteen wide column">
             <div class="ui raised segments">
                 <div class="ui blue segment">
@@ -209,14 +211,13 @@
                     <div class="ui divider"></div>
 
                     <h4>Estimativa</h4>
-                    <p>De <span id="mprecoMinOrcamento"></span> a <span id="precoMaxOrcamento"></span></p>
+                    <p>De <span id="mprecoMinOrcamento"></span> a <span id="mprecoMaxOrcamento"></span></p>
 
                     <h4>Economia mensal</h4>
                     <p><span id="meconomial-mensal"></span></p>
 
                     <h4>Economia total acumulada em 25 anos</h4>
                     <p><span id="meconomia-trinta-anos"></span></p>
-
                 </div>
                 <div class="ui red segment">
                     <h3 class="ui center aligned header">Sistema Indicado <i class="lightning icon"></i></h3>
@@ -226,11 +227,10 @@
                     <p><span id="mtamanho-sistema"></span> kWp</p>
 
                     <h4>Módulos e Área necessária</h4>
-                    <p><span id="mqtd-modulos"></span> módulos e <span id="area-instalacao"></span> m2</p>
+                    <p><span id="mqtd-modulos"></span> módulos e <span id="marea-instalacao"></span> m2</p>
 
                     <h4>Produção anual estimada</h4>
                     <p><span id="mgeracao-anual"></span> KWh</p>
-
                 </div>
                 <div class="ui green segment">
                     <h3 class="ui center aligned header">Estimativa Ambiental <i class="leaf icon"></i></h3>
@@ -244,6 +244,7 @@
 
                     <h4>Equivalente a KM rodados de carro</h4>
                     <p><span id="mcarro-eletrico"></span> km </p>
+
                 </div>
             </div>
         </div>
@@ -404,6 +405,7 @@
 <script>
     $(document).foundation();
 </script>
+<!--suppress ES6ConvertVarToLetConst -->
 <script type='text/javascript'>
     /* <![CDATA[ */
     var wpcf7 = {"apiSettings":{"root":"http:\/\/luxenergiasolar.com.br\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Verifique se voc\u00ea n\u00e3o \u00e9 um rob\u00f4."}}};
