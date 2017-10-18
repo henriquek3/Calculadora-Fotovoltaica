@@ -29,7 +29,8 @@ calc = function calculosTirVpl(fvalorTarifa,
     let eneGerAnualB = 0;
     let eneGerAnualC = 0;
     let resultEneGerAual = 0;
-    let tempA = -3000;
+    let resultFinalInvest = -3000;
+    let receitaAnualFv = 0;
 
     custoOeM = taxaAnualOeM * (taxaInflacaoAnual * cprecoMinOrcamento );
 
@@ -41,7 +42,7 @@ calc = function calculosTirVpl(fvalorTarifa,
         eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
         eneGerAnualC = eneGerAnualB - eneGerAnualA;
         if (ano < 1){
-            tempA = fvalorTarifa * eneGerAnualC;
+            resultFinalInvest = fvalorTarifa * eneGerAnualC;
         }
 
         if (resultEneGerAual > 0) {
@@ -50,8 +51,11 @@ calc = function calculosTirVpl(fvalorTarifa,
 
         resultEneGerAual = eneGerAnualC * perdaRendimentoAnualB;
         fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
+        if (ano === 13) {
+            custoOeM += 3000;
+            console.log({custoOeM: custoOeM, ano});
+        }
         custoOeM = custoOeM + (0.07 * custoOeM);
-        //resultadoFinal = fvalorTarifa * resultEneGerAual;
         /**
          * @todo terminar de calcular a tarifa
          */
@@ -59,22 +63,24 @@ calc = function calculosTirVpl(fvalorTarifa,
              for (let anox = 0; anox < 1; anox++) {
                  fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
                  custoOeM = custoOeM + (0.07 * custoOeM);
-                 //resultadoFinal = fvalorTarifa * resultEneGerAual;
              }
          }
         resultadoFinal = fvalorTarifa * eneGerAnualC;
-        tempA -= resultadoFinal;
-        console.log(resultadoFinal,tempA,ano);
+        resultFinalInvest -= resultadoFinal;
     }
+    receitaAnualFv = fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5));
+    receitaLiquidaAnual = (fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))) - custoOeM;
     console.log({
-        a: fvalorTarifa.toPrecision(3),
-        b: parseInt(resultEneGerAual.toPrecision(5)),
-        c: parseInt(fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))),
-        d: parseInt(custoOeM),
-        e: parseInt((fvalorTarifa * parseInt(resultEneGerAual.toPrecision(5))) - custoOeM)
+        fvalorTarifa: fvalorTarifa.toPrecision(3),
+        resultEneGerAual: parseInt(resultEneGerAual.toPrecision(5)),
+        receitaAnualFv: receitaAnualFv.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+        custoOeM: custoOeM.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+        receitaLiquidaAnual: receitaLiquidaAnual.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+        resultFinalInvest: resultFinalInvest.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
     });
 };
-calc(0.75,11424,43651.65);
+calc(0.75, 3809, 17175.69);
+
 /*
 
 a:"4.76"
