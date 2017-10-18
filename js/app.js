@@ -18,7 +18,6 @@ var App;
             this.valorOrcamento = valorOrcamento;
             this.precoKwp = precoKwp;
         }
-        ;
         CalculoFotoVoltaico.prototype.calculosTirVpl = function (fvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento) {
             /**
              * @var premissas
@@ -45,7 +44,7 @@ var App;
             /**
              * @todo calcular energia gerada
              */
-            for (var ano = 0; ano < 23; ano++) {
+            for (var ano = 0; ano < 28; ano++) {
                 eneGerAnualA = cenergiaGeradaAnual * perdaRendimentoAnualA;
                 eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
                 eneGerAnualC = eneGerAnualB - eneGerAnualA;
@@ -61,7 +60,7 @@ var App;
                 /**
                  * @todo terminar de calcular a tarifa
                  */
-                if (ano === 22) {
+                if (ano === 27) {
                     for (var anox = 0; anox < 1; anox++) {
                         fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
                         custoOeM = custoOeM + (0.07 * custoOeM);
@@ -82,10 +81,6 @@ var App;
                 resultFinalInvest: resultFinalInvest.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
             };
         };
-        ;
-        //=-$B$5*($B$9*((1+$B$3)^0))+SE($B$7=D2;-$B$8;0)
-        //=-0,0025*(44889,31*((1+0,7)^0))
-        //=-0,0025*(44889,31*1,000007)
         CalculoFotoVoltaico.prototype.execute = function () {
             var contaEnergia = this.contaEnergia;
             var energiaGerada = this.energiaGerada;
@@ -193,7 +188,6 @@ var App;
             valorEconomiaMensal = valorTarifa * (energiaGeradaAnual / 12);
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
             var calcTirVpl = this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento);
-            console.log(calcTirVpl);
             return {
                 quantModulos: quantidadeModulos,
                 potenciaKwp: potenciaGeradorSolar.toPrecision(3),
@@ -206,15 +200,9 @@ var App;
                 valorEconomiaMensal: valorEconomiaMensal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
                 precoMinOrcamento: precoMinOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
                 precoMaxOrcamento: precoMaxOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                fvalorTarifa: calcTirVpl.fvalorTarifa,
-                resultEneGerAual: calcTirVpl.resultEneGerAual,
-                receitaAnualFv: calcTirVpl.receitaAnualFv,
-                custoOeM: calcTirVpl.custoOeM,
-                receitaLiquidaAnual: calcTirVpl.receitaLiquidaAnual,
                 resultFinalInvest: calcTirVpl.resultFinalInvest
             };
         };
-        ;
         return CalculoFotoVoltaico;
     }());
     App.CalculoFotoVoltaico = CalculoFotoVoltaico;
@@ -262,7 +250,7 @@ var App;
         document.getElementById('tamanho-sistema').textContent = obj.potenciaKwp;
         document.getElementById('qtd-modulos').textContent = obj.quantModulos;
         document.getElementById('economial-mensal').textContent = obj.valorEconomiaMensal;
-        document.getElementById('economia-trinta-anos').textContent = obj.valorEconomizadoTrintaAnos;
+        document.getElementById('economia-trinta-anos').textContent = obj.resultFinalInvest;
         document.getElementById('precoMinOrcamento').textContent = obj.precoMinOrcamento;
         document.getElementById('precoMaxOrcamento').textContent = obj.precoMaxOrcamento;
         document.getElementById('area-instalacao').textContent = obj.areaInst.toPrecision(3);

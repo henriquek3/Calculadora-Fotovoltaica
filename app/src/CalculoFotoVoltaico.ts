@@ -47,7 +47,7 @@ module App{
             /**
              * @todo calcular energia gerada
              */
-            for (let ano = 0; ano < 23; ano++) {
+            for (let ano = 0; ano < 28; ano++) {
                 eneGerAnualA = cenergiaGeradaAnual * perdaRendimentoAnualA;
                 eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
                 eneGerAnualC = eneGerAnualB - eneGerAnualA;
@@ -63,7 +63,7 @@ module App{
                 /**
                  * @todo terminar de calcular a tarifa
                  */
-                if (ano === 22) {
+                if (ano === 27) {
                     for (let anox = 0; anox < 1; anox++) {
                         fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
                         custoOeM = custoOeM + (0.07 * custoOeM);
@@ -84,10 +84,6 @@ module App{
                 resultFinalInvest: resultFinalInvest.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
             };
         };
-
-        //=-$B$5*($B$9*((1+$B$3)^0))+SE($B$7=D2;-$B$8;0)
-        //=-0,0025*(44889,31*((1+0,7)^0))
-        //=-0,0025*(44889,31*1,000007)
         execute(): any{
             let contaEnergia = this.contaEnergia;
             let energiaGerada = this.energiaGerada;
@@ -176,8 +172,6 @@ module App{
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
 
             let calcTirVpl = this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento);
-            console.log(calcTirVpl);
-
             return {
                 quantModulos: quantidadeModulos,
                 potenciaKwp: potenciaGeradorSolar.toPrecision(3),
@@ -190,11 +184,6 @@ module App{
                 valorEconomiaMensal: valorEconomiaMensal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
                 precoMinOrcamento: precoMinOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
                 precoMaxOrcamento: precoMaxOrcamento.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                fvalorTarifa: calcTirVpl.fvalorTarifa,
-                resultEneGerAual: calcTirVpl.resultEneGerAual,
-                receitaAnualFv: calcTirVpl.receitaAnualFv,
-                custoOeM: calcTirVpl.custoOeM,
-                receitaLiquidaAnual: calcTirVpl.receitaLiquidaAnual,
                 resultFinalInvest: calcTirVpl.resultFinalInvest
             };
 

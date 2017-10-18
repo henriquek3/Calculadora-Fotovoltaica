@@ -28,7 +28,8 @@ calc = function calculosTirVpl(fvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcam
     /**
      * @todo calcular energia gerada
      */
-    for (let ano = 0; ano < 23; ano++) {
+    for (let ano = 0; ano < 28; ano++) {
+        console.log(ano);
         eneGerAnualA = cenergiaGeradaAnual * perdaRendimentoAnualA;
         eneGerAnualB = cenergiaGeradaAnual * perdaRendimentoAnualB;
         eneGerAnualC = eneGerAnualB - eneGerAnualA;
@@ -45,7 +46,7 @@ calc = function calculosTirVpl(fvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcam
         /**
          * @todo terminar de calcular a tarifa
          */
-         if(ano === 22) {
+        if (ano === 27) {
              for (let anox = 0; anox < 1; anox++) {
                  fvalorTarifa += reajusteAnualTarifa * fvalorTarifa;
                  custoOeM = custoOeM + (0.07 * custoOeM);
