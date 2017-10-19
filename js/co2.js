@@ -32,7 +32,8 @@ function total(arg) {
             soma = soma + valoratual*12;
         }
     }
-    tco2e = 12 * (10 / (soma * 12));
+    tco2e = soma * 12;
+    //tco2e = 12 * (10 / (soma * 12));
     //document.getElementById("reducao-co").innerHTML = Math.round(tco2e);
     document.getElementById("reducao-co").innerHTML = tco2e.toPrecision(3);
     document.getElementById("mreducao-co").innerHTML = tco2e.toPrecision(3);

@@ -106,6 +106,7 @@ var App;
             var valor;
             var valorEconomiaMensal;
             var valorEconomizadoTrintaAnos;
+            var minPrecoKwp;
             quantidadeModulos = Math.ceil((energiaGerada * 12) / (hsp * areaModulo * rendimentoModulo * 365));
             potenciaGeradorSolar = (quantidadeModulos * potenciaModulo) / 1000;
             areaInstalacao = quantidadeModulos * areaModulo;
@@ -183,6 +184,11 @@ var App;
             }
             else if (kwp <= 19.20) {
                 valor = 102813.85;
+            }
+            else if (kwp > 19.20) {
+                minPrecoKwp = 5020.56;
+                valor = kwp * minPrecoKwp;
+                precoKwp = 6000;
             }
             precoMinOrcamento = valor;
             precoMaxOrcamentoTmp = kwp * precoKwp;
