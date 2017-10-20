@@ -34,8 +34,17 @@ module App{
     $btn = document.getElementsByClassName('primary button');
 
     $btn[0].onclick = function () {
+        let regexs = new CalculoFotoVoltaico(
+            contaEnergia,energiaGerada,
+            valorTarifa,hsp,
+            potenciaModulo,areaModulo,
+            rendimentoModulo,taxaDisponibilidade,
+            energiaAnualGerada,valorOrcamento,precoKwp
+        );
+
         valorTarifa = +(<HTMLBodyElement>$uf.selectedOptions[0]).dataset.tarifa;
-        energiaGerada = +(<HTMLInputElement>document.getElementById('kwh')).value;
+        energiaGerada = regexs.regexDecimal(+(<HTMLInputElement>document.getElementById('kwh')).value);
+        //energiaGerada = +(<HTMLInputElement>document.getElementById('kwh')).value;
         contaEnergia = energiaGerada * valorTarifa;
 
         let calculo = new CalculoFotoVoltaico(
@@ -48,7 +57,9 @@ module App{
 
         let obj: any;
         obj = calculo.execute();
+        //energiaGerada = regexs.regexDecimal(+(<HTMLInputElement>document.getElementById('kwh')).value);
         console.log(obj);
+        console.log(energiaGerada);
 
         (<HTMLSpanElement>document.getElementById('geracao-anual')).textContent = obj.energiaGeradaAnual;
         (<HTMLSpanElement>document.getElementById('mgeracao-anual')).textContent = obj.energiaGeradaAnual;

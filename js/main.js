@@ -85,16 +85,12 @@ $(document).ready(function () {
                 console.log($kwh);break;
             default:
                 $('.ui.big.primary.button').removeClass('disabled');
-                //console.log('class removed');
         }
     });
     $('#kwh').change(function () {
         let $cid = document.getElementById('cidades').value;
         if ($cid !== 'nao-informado' && this.value > 1) {
-            //console.log(this.value);
-            //console.log($cid);
             $('.ui.big.primary.button').removeClass('disabled');
-            //console.log('removido class disabled do button ');
         }
     });
 

@@ -46,9 +46,12 @@
                         <label for="kwh">Média:</label>
                     </div>
                     <div class="four wide field">
-                        <input type="number" id="kwh" pattern="[0-9]" required>
+                        <span class="ui" data-tooltip="Não Utilize ponto (.)">
+                            <input type="number" id="kwh" pattern="[0-9]+" required>
+                        </span>
+                        <span id="modalsemantic"><a id="kwh" href="#" class="ui left pointing label" id="find-media">Encontrar média?</a></span>
                     </div>
-                    <span style="text-align: center" id="find-media"><a id="modalsemantic" href="#">Encontrar média?</a></span>
+                    <!--<span style="text-align: center" id="find-media"><a id="modalsemantic" href="#">Encontrar média?</a></span>-->
                 </div>
             </div>
             <br>

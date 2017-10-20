@@ -186,9 +186,9 @@ var App;
                 valor = 102813.85;
             }
             else if (kwp > 19.20) {
-                minPrecoKwp = 5020.56;
+                minPrecoKwp = 5302.56;
                 valor = kwp * minPrecoKwp;
-                precoKwp = 6000;
+                precoKwp = 6000.67;
             }
             precoMinOrcamento = valor;
             precoMaxOrcamentoTmp = kwp * precoKwp;
@@ -212,6 +212,24 @@ var App;
             };
         };
         ;
+        CalculoFotoVoltaico.prototype.regexDecimal = function (arg) {
+            var regex = /[0-9]+/g;
+            var str = arg;
+            var m;
+            var temp = '';
+            while ((m = regex.exec(str)) !== null) {
+                // This is necessary to avoid infinite loops with zero-width matches
+                if (m.index === regex.lastIndex) {
+                    regex.lastIndex++;
+                }
+                // The result can be accessed through the `m`-variable.
+                m.forEach(function (match, groupIndex) {
+                    console.log("Found match, group " + groupIndex + ": " + match);
+                    temp = temp + '' + match;
+                });
+            }
+            return parseInt(temp);
+        };
         return CalculoFotoVoltaico;
     }());
     App.CalculoFotoVoltaico = CalculoFotoVoltaico;
@@ -248,13 +266,17 @@ var App;
     $uf = document.getElementById('estados');
     $btn = document.getElementsByClassName('primary button');
     $btn[0].onclick = function () {
+        var regexs = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp);
         valorTarifa = +$uf.selectedOptions[0].dataset.tarifa;
-        energiaGerada = +document.getElementById('kwh').value;
+        energiaGerada = regexs.regexDecimal(+document.getElementById('kwh').value);
+        //energiaGerada = +(<HTMLInputElement>document.getElementById('kwh')).value;
         contaEnergia = energiaGerada * valorTarifa;
         var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp);
         var obj;
         obj = calculo.execute();
+        //energiaGerada = regexs.regexDecimal(+(<HTMLInputElement>document.getElementById('kwh')).value);
         console.log(obj);
+        console.log(energiaGerada);
         document.getElementById('geracao-anual').textContent = obj.energiaGeradaAnual;
         document.getElementById('mgeracao-anual').textContent = obj.energiaGeradaAnual;
         document.getElementById('tamanho-sistema').textContent = obj.potenciaKwp;
