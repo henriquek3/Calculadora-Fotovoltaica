@@ -165,9 +165,9 @@ module App{
             } else if (kwp <= 19.20 ) {
                 valor = 102813.85;
             } else if (kwp > 19.20 ) {
-                minPrecoKwp = 5020.56;
+                minPrecoKwp = 5302.56;
                 valor = kwp * minPrecoKwp;
-                precoKwp = 6000;
+                precoKwp = 6000.67;
             }
 
             precoMinOrcamento = valor;
