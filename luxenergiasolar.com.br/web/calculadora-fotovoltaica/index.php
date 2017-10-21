@@ -86,9 +86,12 @@
                         <label for="kwh">Média:</label>
                     </div>
                     <div class="four wide field">
-                        <input type="number" id="kwh" pattern="[0-9]" required>
+                        <span class="ui" data-tooltip="Não Utilize ponto ou vírgula" data-variation="tiny"
+                              data-position="bottom center">
+                            <input type="number" id="kwh" pattern="[0-9]+" required>
+                        </span>
+                        <span id="modalsemantic"><a href="#" class="ui left pointing label" id="find-media">Encontrar média?</a></span>
                     </div>
-                    <span style="text-align: center" id="find-media"><a id="modalsemantic" href="#">Encontrar média?</a></span>
                 </div>
             </div>
             <br>
@@ -402,9 +405,7 @@
 </footer>
 <script src="http://luxenergiasolar.com.br/wp-content/themes/luxsolar/js/vendor/what-input.js"></script>
 <script src="http://luxenergiasolar.com.br/wp-content/themes/luxsolar/js/vendor/foundation.min.js"></script>
-<script>
-    $(document).foundation();
-</script>
+<script>$(document).foundation();</script>
 <!--suppress ES6ConvertVarToLetConst -->
 <script type='text/javascript'>
     /* <![CDATA[ */
@@ -415,20 +416,15 @@
 <script type='text/javascript' src='http://luxenergiasolar.com.br/wp-includes/js/wp-embed.min.js?ver=4.7.6'></script>
 <script src="js/co2.js"></script>
 <script src="js/main.js"></script>
-<script src="js/app.js"></script>
-<script>
-    /*$('.ui.modal').modal('attach events','#modalsemantic','show');*/
-    $('#estados,#cidades').dropdown();
-</script>
-<script>
-    $(document).ready(function(){
+<script src="js/app.min.js"></script>
+<script>$('#estados,#cidades').dropdown();</script>
+<script>$(document).ready(function () {
         let tam = $(window).width();
-        if (tam >=1024 ){
-            $('#desktopModal').modal('attach events','#modalsemantic','show');
-        }else{
-            $('#mobileModal').modal('attach events','#modalsemantic','show');
+        if (tam >= 1024) {
+            $('#desktopModal').modal('attach events', '#modalsemantic', 'show');
+        } else {
+            $('#mobileModal').modal('attach events', '#modalsemantic', 'show');
         }
-    });
-</script>
+    });</script>
 </body>
 </html>
