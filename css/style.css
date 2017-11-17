@@ -2,25 +2,6 @@ header {
     margin-top: 20px;
 }
 
-main {
-   /* margin-left: 20px;
-    margin-right: 20px;  */
-}
-
-.wrapper{
-/*  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;*/
-}
-
-.ui.segment {
-	/*width: 75%;
-    height: 400px;   */
-}
-
 .scrolling.content{
     height: 360px;
 }
@@ -44,21 +25,9 @@ main {
 }
 
 .big.primary.button {
-    /*width: 300px;*/
     font-size: 20px;
 }
 
-/*
- * O retorno dos ID's
-*/
-
-#kwh {
-  /*max-width: 252px;*/
-}
-
-#tarifa {
-    /*max-width: 198px;*/
-}
 #find-media {
   font-size: 14px;
 }

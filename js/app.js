@@ -5,7 +5,7 @@
 var App;
 (function (App) {
     var CalculoFotoVoltaico = /** @class */ (function () {
-        function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp) {
+        function CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp, despesaViagema) {
             this.contaEnergia = contaEnergia;
             this.energiaGerada = energiaGerada;
             this.valorTarifa = valorTarifa;
@@ -17,6 +17,7 @@ var App;
             this.energiaAnualGerada = energiaAnualGerada;
             this.valorOrcamento = valorOrcamento;
             this.precoKwp = precoKwp;
+            this.despesaViagema = despesaViagema;
         }
         ;
         CalculoFotoVoltaico.prototype.calculosTirVpl = function (fvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento) {
@@ -107,6 +108,7 @@ var App;
             var valorEconomiaMensal;
             var valorEconomizadoTrintaAnos;
             var minPrecoKwp;
+            var despesaViagem = this.despesaViagema;
             quantidadeModulos = Math.ceil((energiaGerada * 12) / (hsp * areaModulo * rendimentoModulo * 365));
             potenciaGeradorSolar = (quantidadeModulos * potenciaModulo) / 1000;
             areaInstalacao = quantidadeModulos * areaModulo;
@@ -126,7 +128,8 @@ var App;
                 valor = 17175.69;
             }
             else if (kwp <= 3.25) {
-                valor = 19862.19;
+                //valor = 19862.19; valor em w 350 valor inicial fica maior que o valor final
+                valor = 19162.19;
             }
             else if (kwp <= 3.90) {
                 valor = 22011.39;
@@ -193,10 +196,14 @@ var App;
             precoMinOrcamento = valor;
             precoMaxOrcamentoTmp = kwp * precoKwp;
             precoMaxOrcamento = precoMaxOrcamentoTmp;
+            if (despesaViagem) {
+                precoMaxOrcamento += despesaViagem;
+            }
             valorEconomiaMensal = valorTarifa * (energiaGeradaAnual / 12);
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
             var calcTirVpl = this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento);
             return {
+                desp: despesaViagem,
                 quantModulos: quantidadeModulos,
                 potenciaKwp: potenciaGeradorSolar.toPrecision(3),
                 areaInst: areaInstalacao,
@@ -253,6 +260,8 @@ var App;
     var precoKwp;
     var $uf;
     var $btn;
+    var $hidden;
+    var despesaViagem;
     //  @todo parametros do sistema
     //=============================================
     hsp = 4.27;
@@ -262,21 +271,29 @@ var App;
     taxaDisponibilidade = 50;
     valorOrcamento = 44889.31;
     precoKwp = 6695.58;
+    despesaViagem = false;
     //==============================================
     $uf = document.getElementById('estados');
     $btn = document.getElementsByClassName('primary button');
+    $hidden = document.getElementById('metainput');
     $btn[0].onclick = function () {
-        var regexs = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp);
+        console.log($hidden.value);
+        if ($hidden.value !== '4271 ') {
+            console.log($hidden.value + ' Rondonópolis');
+            //precoMaxOrcamento = precoMaxOrcamento + 2000;
+            despesaViagem = 2000;
+        }
+        var regexs = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp, despesaViagem);
         valorTarifa = +$uf.selectedOptions[0].dataset.tarifa;
         energiaGerada = regexs.regexDecimal(+document.getElementById('kwh').value);
         //energiaGerada = +(<HTMLInputElement>document.getElementById('kwh')).value;
         contaEnergia = energiaGerada * valorTarifa;
-        var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp);
+        var calculo = new App.CalculoFotoVoltaico(contaEnergia, energiaGerada, valorTarifa, hsp, potenciaModulo, areaModulo, rendimentoModulo, taxaDisponibilidade, energiaAnualGerada, valorOrcamento, precoKwp, despesaViagem);
         var obj;
         obj = calculo.execute();
         //energiaGerada = regexs.regexDecimal(+(<HTMLInputElement>document.getElementById('kwh')).value);
         console.log(obj);
-        console.log(energiaGerada);
+        //console.log(energiaGerada);
         document.getElementById('geracao-anual').textContent = obj.energiaGeradaAnual;
         document.getElementById('mgeracao-anual').textContent = obj.energiaGeradaAnual;
         document.getElementById('tamanho-sistema').textContent = obj.potenciaKwp;

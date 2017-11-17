@@ -16,6 +16,8 @@ module App{
     let precoKwp: number;
     let $uf: any;
     let $btn: any;
+    let $hidden: any;
+    let despesaViagem: any;
 
 //  @todo parametros do sistema
 //=============================================
@@ -27,19 +29,27 @@ module App{
     taxaDisponibilidade = 50;
     valorOrcamento = 44889.31;
     precoKwp = 6695.58;
+    despesaViagem = false;
 
 //==============================================
 
     $uf = document.getElementById('estados');
     $btn = document.getElementsByClassName('primary button');
+    $hidden = document.getElementById('metainput');
 
     $btn[0].onclick = function () {
+        console.log($hidden.value);
+        if ( $hidden.value !== '4271 '){
+            console.log($hidden.value + ' Rondonópolis');
+            //precoMaxOrcamento = precoMaxOrcamento + 2000;
+            despesaViagem = 2000;
+        }
         let regexs = new CalculoFotoVoltaico(
             contaEnergia,energiaGerada,
             valorTarifa,hsp,
             potenciaModulo,areaModulo,
             rendimentoModulo,taxaDisponibilidade,
-            energiaAnualGerada,valorOrcamento,precoKwp
+            energiaAnualGerada,valorOrcamento,precoKwp,despesaViagem
         );
 
         valorTarifa = +(<HTMLBodyElement>$uf.selectedOptions[0]).dataset.tarifa;
@@ -52,15 +62,15 @@ module App{
             valorTarifa,hsp,
             potenciaModulo,areaModulo,
             rendimentoModulo,taxaDisponibilidade,
-            energiaAnualGerada,valorOrcamento,precoKwp
+            energiaAnualGerada,valorOrcamento,precoKwp,despesaViagem
         );
+
 
         let obj: any;
         obj = calculo.execute();
         //energiaGerada = regexs.regexDecimal(+(<HTMLInputElement>document.getElementById('kwh')).value);
         console.log(obj);
-        console.log(energiaGerada);
-
+        //console.log(energiaGerada);
         (<HTMLSpanElement>document.getElementById('geracao-anual')).textContent = obj.energiaGeradaAnual;
         (<HTMLSpanElement>document.getElementById('mgeracao-anual')).textContent = obj.energiaGeradaAnual;
         (<HTMLSpanElement>document.getElementById('tamanho-sistema')).textContent = obj.potenciaKwp;
@@ -77,6 +87,5 @@ module App{
         (<HTMLSpanElement>document.getElementById('mprecoMaxOrcamento')).textContent = obj.precoMaxOrcamento;
         (<HTMLSpanElement>document.getElementById('area-instalacao')).textContent = obj.areaInst.toPrecision(3);
         (<HTMLSpanElement>document.getElementById('marea-instalacao')).textContent = obj.areaInst.toPrecision(3);
-
     }
 }

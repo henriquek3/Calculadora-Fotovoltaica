@@ -16,7 +16,8 @@ module App{
             public taxaDisponibilidade: number,
             public energiaAnualGerada: number,
             public valorOrcamento: number,
-            public precoKwp: number
+            public precoKwp: number,
+            public despesaViagema: number
         ){};
 
         calculosTirVpl(fvalorTarifa, cenergiaGeradaAnual, cprecoMinOrcamento): any {
@@ -108,6 +109,7 @@ module App{
             let valorEconomiaMensal: number;
             let valorEconomizadoTrintaAnos: number;
             let minPrecoKwp: number;
+            let despesaViagem = this.despesaViagema;
 
             quantidadeModulos = Math.ceil((energiaGerada * 12) / (hsp * areaModulo * rendimentoModulo * 365));
             potenciaGeradorSolar = (quantidadeModulos * potenciaModulo) / 1000;
@@ -125,7 +127,8 @@ module App{
             } else if (kwp <= 2.60 ) {
                 valor = 17175.69;
             } else if (kwp <= 3.25 ) {
-                valor = 19862.19;
+                //valor = 19862.19; valor em w 350 valor inicial fica maior que o valor final
+                valor = 19162.19;
             } else if (kwp <= 3.90 ) {
                 valor = 22011.39;
             } else if (kwp <= 4.55 ) {
@@ -173,11 +176,15 @@ module App{
             precoMinOrcamento = valor;
             precoMaxOrcamentoTmp = kwp * precoKwp;
             precoMaxOrcamento = precoMaxOrcamentoTmp;
+            if ( despesaViagem ) {
+                precoMaxOrcamento += despesaViagem;
+            }
             valorEconomiaMensal = valorTarifa * ( energiaGeradaAnual / 12);
             valorEconomizadoTrintaAnos = 360 * valorEconomiaMensal;
 
             let calcTirVpl = this.calculosTirVpl(valorTarifa, energiaGeradaAnual, precoMinOrcamento);
             return {
+                desp: despesaViagem,
                 quantModulos: quantidadeModulos,
                 potenciaKwp: potenciaGeradorSolar.toPrecision(3),
                 areaInst: areaInstalacao,

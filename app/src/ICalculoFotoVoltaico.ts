@@ -13,6 +13,7 @@ module App{
         taxaDisponibilidade: number;
         energiaAnualGerada: number;
         precoKwp: number;
+        despesaViagema: number;
 
         execute(): string;
     }

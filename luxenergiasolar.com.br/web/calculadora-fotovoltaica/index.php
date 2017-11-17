@@ -86,8 +86,7 @@
                         <label for="kwh">Média:</label>
                     </div>
                     <div class="four wide field">
-                        <span class="ui" data-tooltip="Não Utilize ponto ou vírgula" data-variation="tiny"
-                              data-position="bottom center">
+                        <span class="ui" data-tooltip="Não Utilize ponto ou vírgula" data-variation="tiny" data-position="bottom center">
                             <input type="number" id="kwh" pattern="[0-9]+" required>
                         </span>
                         <span id="modalsemantic"><a href="#" class="ui left pointing label" id="find-media">Encontrar média?</a></span>
@@ -417,14 +416,6 @@
 <script src="js/co2.js"></script>
 <script src="js/main.js"></script>
 <script src="js/app.min.js"></script>
-<script>$('#estados,#cidades').dropdown();</script>
-<script>$(document).ready(function () {
-        let tam = $(window).width();
-        if (tam >= 1024) {
-            $('#desktopModal').modal('attach events', '#modalsemantic', 'show');
-        } else {
-            $('#mobileModal').modal('attach events', '#modalsemantic', 'show');
-        }
-    });</script>
+<script>$('#estados,#cidades').dropdown();</script><script>$(document).ready(function(){let tam = $(window).width();if (tam >=1024 ){$('#desktopModal').modal('attach events','#modalsemantic','show');}else{$('#mobileModal').modal('attach events','#modalsemantic','show');}});</script>
 </body>
 </html>
