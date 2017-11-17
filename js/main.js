@@ -92,12 +92,9 @@ $(document).ready(function () {
         $( "#cidades option:selected" ).each(function() {
            let str = $( this ).val() + " ";
            if (str === '4271 ') {
-               alert('Rondonópolis');
                $('#metainput').val(str);
            }
-            console.log(str);
         });
-
     });
     $('#kwh').change(function () {
         let $cid = document.getElementById('cidades').value;

@@ -51,12 +51,10 @@ module App{
             rendimentoModulo,taxaDisponibilidade,
             energiaAnualGerada,valorOrcamento,precoKwp,despesaViagem
         );
-
         valorTarifa = +(<HTMLBodyElement>$uf.selectedOptions[0]).dataset.tarifa;
         energiaGerada = regexs.regexDecimal(+(<HTMLInputElement>document.getElementById('kwh')).value);
         //energiaGerada = +(<HTMLInputElement>document.getElementById('kwh')).value;
         contaEnergia = energiaGerada * valorTarifa;
-
         let calculo = new CalculoFotoVoltaico(
             contaEnergia,energiaGerada,
             valorTarifa,hsp,
@@ -65,12 +63,11 @@ module App{
             energiaAnualGerada,valorOrcamento,precoKwp,despesaViagem
         );
 
-
         let obj: any;
         obj = calculo.execute();
         //energiaGerada = regexs.regexDecimal(+(<HTMLInputElement>document.getElementById('kwh')).value);
         console.log(obj);
-        //console.log(energiaGerada);
+        console.log(energiaGerada);
         (<HTMLSpanElement>document.getElementById('geracao-anual')).textContent = obj.energiaGeradaAnual;
         (<HTMLSpanElement>document.getElementById('mgeracao-anual')).textContent = obj.energiaGeradaAnual;
         (<HTMLSpanElement>document.getElementById('tamanho-sistema')).textContent = obj.potenciaKwp;

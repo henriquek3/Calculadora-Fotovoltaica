@@ -143,7 +143,7 @@
             </div>
         </div>
     </div>
-
+    <input type="hidden" value="testeinputhidden" id="metainput">
     <!-- Corpo do Resultado -->
     <header style="display: none" id="header-resultado">
         <div class="ui center aligned header">
@@ -415,7 +415,7 @@
 <script type='text/javascript' src='http://luxenergiasolar.com.br/wp-includes/js/wp-embed.min.js?ver=4.7.6'></script>
 <script src="js/co2.js"></script>
 <script src="js/main.js"></script>
-<script src="js/app.min.js"></script>
+<script src="js/app.js"></script>
 <script>$('#estados,#cidades').dropdown();</script><script>$(document).ready(function(){let tam = $(window).width();if (tam >=1024 ){$('#desktopModal').modal('attach events','#modalsemantic','show');}else{$('#mobileModal').modal('attach events','#modalsemantic','show');}});</script>
 </body>
 </html>

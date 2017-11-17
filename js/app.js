@@ -293,7 +293,7 @@ var App;
         obj = calculo.execute();
         //energiaGerada = regexs.regexDecimal(+(<HTMLInputElement>document.getElementById('kwh')).value);
         console.log(obj);
-        //console.log(energiaGerada);
+        console.log(energiaGerada);
         document.getElementById('geracao-anual').textContent = obj.energiaGeradaAnual;
         document.getElementById('mgeracao-anual').textContent = obj.energiaGeradaAnual;
         document.getElementById('tamanho-sistema').textContent = obj.potenciaKwp;
